@@ -1,0 +1,31 @@
+.homePageFragment{
+    overflow-y: visible;
+    .homePageLayout{
+        background: url('./layout7.jpg') no-repeat;
+        background-position: 0 -5rem;
+        background-size: 100rem auto ;
+        
+        
+        
+        .homePageText{
+            padding-top: 15rem;
+            padding-bottom: 20rem;
+            .homePageText_main{
+                font-size:  4em;
+            }
+            .homePageText_secondary{
+                font-size:  1.7em;
+                font-weight: normal;
+                margin-top:  1.5em;
+            }
+            .homePageButton{
+                margin-top:2rem;
+                
+            }
+        }
+
+    }
+
+} 
+ 
+

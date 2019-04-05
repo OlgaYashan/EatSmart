@@ -1,0 +1,51 @@
+.Search{
+    padding-top: 6.3rem !important;
+    position: relative;
+    padding-left: 57vw !important;   
+    .results{
+        margin-left: 54rem !important;
+        overflow-y:scroll;
+        max-height:20vh;
+    }
+    
+}
+
+.cardGrid{
+    overflow-y:scroll;
+    height:75vh;
+    padding-left: 1rem !important; 
+    margin-top: 1rem !important;
+    box-shadow: 0 0 40px rgba(0, 0, 0, .1) inset; 
+    .unstyled-button{
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+    }
+    .unstyled-button:focus {
+        border: none !important;
+        outline : none; 
+       
+    }
+    .card:hover{
+        box-shadow: 0 20px 28px rgba(0,0,0,0.25), 0 20px 10px rgba(0,0,0,0.22);
+    }
+    .card{
+        max-width: 16vw; 
+    }
+
+    .column{
+        height: 13rem;
+    }
+
+   
+    
+}
+
+.aside{
+    box-shadow: 0 20px 28px rgba(0,0,0,0.25), 0 20px 10px rgba(0,0,0,0.22);
+    margin-top: 5rem !important;
+    padding: 1rem;
+    height: calc(100vh - 6rem) !important;
+}
