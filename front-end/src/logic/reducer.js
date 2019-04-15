@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import recipes from "./recipes/reducer";
+import recipes from "./recipes(temp)/reducer";
 import user from "./user/reducer"
 import products from "./products/reducer"
 

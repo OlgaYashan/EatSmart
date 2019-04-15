@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const config = {
-  apiHost: process.env.REACT_APP_API_HOST
+  apiHost: "http://localhost:3000/"
 };
 
 export default config;
