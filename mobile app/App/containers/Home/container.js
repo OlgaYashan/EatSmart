@@ -32,13 +32,3 @@ export default connect(
   )(Home);
   
 
-
-/*
-export default connect(state => ({
-    counter: state.counter.count,
-    routes: state.routes
-}),
-    (dispatch) => ({
-        actions: bindActionCreators(counterActions, dispatch)
-    })
-)(Home);*/
