@@ -1,29 +1,23 @@
 {
-  "name": "app",
-  "version": "0.0.1",
-  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "eject": "expo eject"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.8.6",
-    "react-native": "0.59.5",
-    "react-redux": "^7.0.2",
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/runtime": "7.4.3",
-    "babel-jest": "24.7.1",
-    "jest": "24.7.1",
-    "metro-react-native-babel-preset": "0.53.1",
-    "react-test-renderer": "16.8.3"
+    "babel-preset-expo": "^5.0.0"
   },
-  "jest": {
-    "preset": "react-native"
-  }
+  "private": true
 }
