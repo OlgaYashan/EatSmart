@@ -1,7 +1,20 @@
 const router = require("express").Router();
 
 let ProductModel = require('../../models/product');
+const productService = require("../../services/product");
 
+router.get("/all", (req, res, next) => {
+  productService.findAll((err, data) => {
+    if (!err) {
+      res.data = data;
+      console.log(res.data);
+      res.json(res.data);
+    } else {
+      res.status(400);
+      res.end();
+    }
+  });
+});
 
 
 

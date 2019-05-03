@@ -9,9 +9,9 @@ const state = {
       login:"",
       password:"",
       name:"",
-      avatarLink:""
+      avatarLink:"http://trinitynews.ie/wp-content/uploads/2017/02/hijab.png"
+      
     },
-    
     loading: false,
     error: null
   },

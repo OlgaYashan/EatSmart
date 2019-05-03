@@ -1,0 +1,18 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
+   .heading{
+       font-family: Comfortaa !important;
+       .text__color{
+          color: rgba(97, 133, 0, 0.849);
+          
+       }
+       .exit{
+        position: relative;
+        top: -2px;
+    }
+   }
+
+   

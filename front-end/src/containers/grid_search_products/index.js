@@ -10,9 +10,38 @@ class ProductsGrid extends Component {
     this.props.loadProducts();
   };
 
+  myIndexOf = (arr, o) =>{  
+    console.log(arr.length); 
+    for (var i = 0; i < arr.length; i++) {
+      
+        if (arr[i].name == o.name) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+  updateProductsArray = (newArr) =>{
+    var stateArr = this.props.user.lastProducts;
+    var newArr = newArr;
+    for(var i=newArr.length-1; i>=0; i--){
+      if(this.myIndexOf(stateArr,newArr[i])!=-1){
+        var index = this.myIndexOf(stateArr,newArr[i]);
+        stateArr.splice(index,1);
+        stateArr.unshift(newArr[i]);
+      }
+      else{
+        stateArr.unshift(newArr[i]);
+      }
+    }
+    var newUser = this.props.user;
+    newUser.lastProducts =  stateArr;
+    this.props.updateUserProducts(newUser);
+  }
+
   renderProducts = () => {
-    const { products } = this.props;
-    return (<GridSearch source={products}/>);
+    const { products, user } = this.props;
+    return (<GridSearch updateProductsArray={this.updateProductsArray} user={user} source={products}/>);
   };
 
   render() {

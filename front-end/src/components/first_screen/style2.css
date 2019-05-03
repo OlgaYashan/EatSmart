@@ -1,0 +1,109 @@
+.container__details{
+    background-color: #d3c8c8;
+}
+.content{
+  width: 461px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  
+  
+  
+}
+
+.content h1{
+  margin-top: 75px;
+  text-align: center;
+  
+}
+
+.content h2{
+  margin-top: 40px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.buttons{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 50px;
+  width: 190px;
+  
+}
+
+.buttons .button{ 
+  background: #81868e;
+  margin-top: 0;
+  width: 40px;
+  height: 40px;
+     transition: 0.4s ease-in-out;
+}
+
+.icon_heart:before{
+content:  url(../../img/heart.png);
+position: relative;
+top: 9px;
+left: 8px;
+}
+
+.icon_mouse:before{
+content:  url(../../img/mouse.png);
+position: relative;
+top: 8px;
+left: 8px;
+}
+
+.icon_lamp:before{
+content:  url(../../img/lamp.png);
+position: relative;
+top: 8px;
+left: 8px;
+}
+
+.icon_heart:hover,
+.icon_mouse:hover,
+.icon_lamp:hover{
+  background: #19bd9a;
+  transition: 0.4s ease-in-out;
+}
+
+
+
+.text_details{
+  margin: 0 auto;
+   width: 970px;
+}
+
+.text_details_parts{
+padding-bottom: 100px;
+}
+
+.text_details_left{
+  display: block;
+  margin-right: 130px;
+  width: 300px;
+  float: left;
+  margin-bottom: 20px;
+}
+
+
+
+
+h4{
+  font-family: MyriadPro-Regular;
+  font-size: 20px;
+  color: #464646;
+  margin-bottom: 35px;
+}
+
+p{
+  font-family: MyriadPro-Regular;
+  font-size: 16px;
+  line-height: 25px;  
+  color: #81868e;
+}
+
+span{
+  color: #19bd9a;
+}

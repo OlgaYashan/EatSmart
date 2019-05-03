@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import LogoImg from "./logo.png"
 import "./index.scss"; 
+import history from "../../history";
 
 export default class LoginForm extends Component {
     state = {
@@ -17,9 +18,12 @@ export default class LoginForm extends Component {
        // const {checkUser} = this.props;
        // checkUser(this.state.login,this.state.password);
       this.setState({messageOpened:true});
-      const {authorization} = this.props;
+      const {authorization, error,loading} = this.props;
       const {login, password} = this.state;
       authorization(login,password);
+      
+      
+    
        
     }
 
@@ -39,7 +43,7 @@ export default class LoginForm extends Component {
     }
 
     render(){
-      const {error} = this.props;
+      const {error, loading} = this.props;
       const {messageOpened} = this.state;
         return(<div className='login-form'>
         
@@ -52,32 +56,33 @@ export default class LoginForm extends Component {
         <Grid className="loginForm" textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 350 }}>
             <Header as='h2' color='olive' textAlign='center'>
-              <Image size="huge" src={LogoImg} /> Log-in to your account
+              <Image size="huge" src={LogoImg} /> Вхід
             </Header>
             
             {error  && messageOpened && this.openMessage()}
+            {loading && this.closeMessage()}
             <Form inverted size='large' >
             
               <Segment inverted stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' 
+                <Form.Input fluid icon='user' iconPosition='left' placeholder='Логін' 
                   onChange={this.handleLogin} 
                   onClick={this.closeMessage} />
                 <Form.Input
                   fluid
                   icon='lock'
                   iconPosition='left'
-                  placeholder='Password'
+                  placeholder='Пароль'
                   type='password'
                   onChange={this.handlePassword}
                   onClick={this.closeMessage}
                 />
                 <Button color='olive' fluid size='large' onClick={this.handleSubmit}>
-                  Login
+                  Увійти
                 </Button>
               </Segment>
             </Form>
             <Message color ="olive">
-              New to us? Sign Up
+              Ще не зарєстрований? Зареєструватися
             </Message>
           </Grid.Column>
         </Grid>

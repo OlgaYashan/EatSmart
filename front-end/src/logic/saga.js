@@ -5,6 +5,6 @@ import user from "./user/saga"
 import products from "./products/saga"
 
 export default function* rootSaga() {
-  yield all([fork(products)]);
+  yield all([fork(products),fork(user)]);
   /// yield all([fork(recipes),fork(user),fork(products)]);
 }

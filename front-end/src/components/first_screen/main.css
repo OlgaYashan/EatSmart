@@ -1,0 +1,50 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+.clearfix:after{
+    content: "";
+    display: table;
+    width: 100%;
+    clear: both;
+}
+
+div{
+    box-sizing: border-box;
+}
+
+.container{
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.btn_arrow{ 
+    display: block;
+    background: #a6d426;
+    border-radius: 100%;
+    margin-left: 10rem;
+    width: 27px;
+    height: 27px;
+    margin-top: 40px;
+    text-decoration: none;
+    transition: 0.4s ease-in-out;
+    
+}
+
+.icon_arrow:before{
+  content:  url(../../img/arrow.png);
+  position: relative;
+  top: 7px;
+  left: 5px;
+}
+
+.icon_arrow:hover{
+    background: #333b46;
+    transition: 0.4s ease-in-out;
+}
+
+
+
+
+
+

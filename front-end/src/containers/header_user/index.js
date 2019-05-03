@@ -5,10 +5,15 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 import Header from '../../components/header' 
 import "./index.scss";
 
+import history from "../../history";
+
 export class UserHeader extends Component{
 
     authorization = (login, password)=>{
         this.props.authorizeUser(login,password);
+        const { error, loading, user } = this.props;
+        
+        
      
     }
        

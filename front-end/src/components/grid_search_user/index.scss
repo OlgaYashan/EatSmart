@@ -2,11 +2,12 @@
     padding-top: 6.3rem !important;
     position: relative;
     padding-left: 57vw !important;   
+    .results{
+        margin-left: 54rem !important;
+        overflow-y:scroll;
+        max-height:20vh;
+    }
     
-    
-}
-.ui.search .results {
-    display: none !important;
 }
 
 .cardGrid{
@@ -21,12 +22,10 @@
         border: none;
         cursor:pointer;
         overflow: hidden;
-        text-align: left !important;
     }
     .unstyled-button:focus {
         border: none !important;
         outline : none; 
-
        
     }
     .card:hover{
@@ -34,10 +33,6 @@
     }
     .card{
         max-width: 16vw; 
-        padding: 10px;
-        .content{
-            max-width: 15vw; 
-        }
     }
 
     .column{
@@ -53,19 +48,4 @@
     margin-top: 5rem !important;
     padding: 1rem;
     height: calc(100vh - 6rem) !important;
-    overflow-y:scroll;
-    .aside_info{
-        padding: 10px;
-    }
-    .aside_card{
-        .content{
-            width:14rem;
-        }
-    }
-    .aside_img_container{
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-    
 }
-

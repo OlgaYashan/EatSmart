@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
 .homePageFragment{
     overflow-y: visible;
     .homePageLayout{
@@ -8,22 +13,32 @@
         
         
         .homePageText{
-            padding-top: 15rem;
+            margin-left: 10rem!important; 
+            width: 35%;
+            padding-top: 13rem;
             padding-bottom: 20rem;
+            font-family: Comfortaa !important; 
+
             .homePageText_main{
-                font-size:  4em;
+                font-size:  5em;
             }
             .homePageText_secondary{
-                font-size:  1.7em;
+                font-size:  1.4em;
                 font-weight: normal;
                 margin-top:  1.5em;
+                font-family: Comfortaa !important; 
             }
             .homePageButton{
                 margin-top:2rem;
+                font-family: Comfortaa !important; 
                 
             }
         }
 
+    }
+    .footer{
+        background-color: rgb(34, 29, 29);
+        height: 3rem;
     }
 
 } 
