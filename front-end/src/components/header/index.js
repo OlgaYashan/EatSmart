@@ -12,8 +12,20 @@ export default class Header extends Component{
 
     state={
         login: "",
-        password:""
+        password:"",
+        modal:false
+       
     }
+
+    close=()=>{
+        this.setState({modal:false});
+    }
+
+    open=()=>{
+        this.setState({modal:true}); 
+    }
+
+  
 
     checkUser = ()=>{
         const {user} = this.props;
@@ -33,10 +45,12 @@ export default class Header extends Component{
      
         
      }
+
+     close
  
 
     render(){
-        const { user, authorization, error} = this.props;
+        const { user, authorization, error,registration} = this.props;
         return(
             <Fragment>
                   <Menu fixed='top' inverted>
@@ -49,7 +63,7 @@ export default class Header extends Component{
                         <Dropdown item simple text='Меню'>
                         <Dropdown.Menu>
                             <Dropdown.Item>Компоненти</Dropdown.Item>
-                            <Dropdown.Item>temp</Dropdown.Item>
+                            <Dropdown.Item>Дієти</Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Header>Навчання</Dropdown.Header>
                             <Dropdown.Item>
@@ -75,9 +89,9 @@ export default class Header extends Component{
                             </Fragment>
                         }
                         {!this.checkUser() && 
-                            <Modal size="mini" dimmer="blurring" trigger={ <Menu.Item as='a' position='right'>Увійти</Menu.Item >}>
+                            <Modal  open={this.state.modal} onClose={this.close} size="mini" dimmer="blurring" trigger={ <Menu.Item as='a' onClick={this.open} position='right'>Увійти</Menu.Item >}>
                                 <Modal.Content>
-                                    <LoginForm error={error} authorization={authorization}/>
+                                    <LoginForm registration={registration} closeLogin={this.close} openLogin={this.open} error={error} authorization={authorization} />
                                 </Modal.Content>
                             </Modal>}
                     </Container>

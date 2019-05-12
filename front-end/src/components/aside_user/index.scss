@@ -1,11 +1,63 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
 .aside_user{
     box-shadow: 0 20px 28px rgba(0,0,0,0.25), 0 20px 10px rgba(0,0,0,0.22);
-    height: 91vh !important;
+    max-height: 91vh !important;
     margin-top: 0 !important;
+   
     overflow-y: hidden;
-    .aside_img_container{
-        padding: 10px;
-        padding-top: 4rem;
-        margin-bottom: 20px;
+    .ui.horizontal.divider{
+        margin: 0.5rem 0 !important;
     }
+    .info{
+        display:flex;
+        flex-direction: row;
+        margin: 0 auto;
+        .info_header{
+            margin: 0 !important;
+            padding-bottom: 0.5rem;
+        }
+    }
+    .items{    
+        display: inline-block;
+        padding-bottom: 12px;
+
+        .divider__color_grey{
+            color: rgb(117, 117, 117);
+            font-family: Comfortaa !important; 
+            font-size:  1em;
+            padding-bottom: 0.5rem;
+           
+        }
+    }
+    .divider__color_green{
+        color: rgb(78, 172, 15);
+        font-family: Comfortaa !important; 
+        font-size:  1em;
+        padding-bottom: 0.5rem;
+    }
+    .componentGrid{
+        overflow-y:scroll;
+        min-height: 7vh;
+        max-height:17vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1) inset; 
+      
+    }
+    .aside_img_container{
+        padding-top: 3rem;
+        margin-bottom: 20px;
+        height: 30vh !important;
+    }
+    .divider__color{
+        color: rgb(167, 207, 55);
+        font-family: Comfortaa !important; 
+        font-size:  1em;
+    }
+    .ui.center.aligned.header{
+        margin: 0.1rem 0 !important;
+    }
+   
 }

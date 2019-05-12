@@ -1,73 +1,73 @@
 import defaultState from "../defaultState";
 import {
-  LOAD_USER,
-  LOAD_USER_SUCCESS,
-  LOAD_USER_ERROR,
-  UPDATE_USER,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR,
-  ADD_USER,
-  ADD_USER_SUCCESS,
-  ADD_USER_ERROR
+  LOAD_COMPONENT,
+  LOAD_COMPONENT_SUCCESS,
+  LOAD_COMPONENT_ERROR,
+  UPDATE_COMPONENT,
+  UPDATE_COMPONENT_SUCCESS,
+  UPDATE_COMPONENT_ERROR,
+  ADD_COMPONENT,
+  ADD_COMPONENT_SUCCESS,
+  ADD_COMPONENT_ERROR
 
 } from "./actionTypes";
 
-export default function userReducer(state = defaultState.user, action) {
+export default function componentReducer(state = defaultState.component, action) {
   switch (action.type) {
-    case LOAD_USER: {
+    case LOAD_COMPONENT: {
       return {
         ...state,
         loading: true
       };
     }
-    case LOAD_USER_SUCCESS: {
+    case LOAD_COMPONENT_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        components: action.payload.components,
         loading: false
       };
     }
-    case LOAD_USER_ERROR: {
+    case LOAD_COMPONENT_ERROR: {
       return {
         ...state,
         loading: false,
         error: action.payload.error
       };
     }
-    case UPDATE_USER: {
+    case UPDATE_COMPONENT: {
       return {
         ...state,
         loading: true
       };
     }
-    case UPDATE_USER_SUCCESS: {
+    case UPDATE_COMPONENT_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        component: action.payload.component,
         loading: false
       };
     }
-    case UPDATE_USER_ERROR: {
+    case UPDATE_COMPONENT_ERROR: {
       return {
         ...state,
         loading: false,
         error: action.payload.error
       };
     }
-    case ADD_USER: {
+    case ADD_COMPONENT: {
       return {
         ...state,
         loading: true
       };
     }
-    case ADD_USER_SUCCESS: {
+    case ADD_COMPONENT_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        component: action.payload.component,
         loading: false
       };
     }
-    case ADD_USER_ERROR: {
+    case ADD_COMPONENT_ERROR: {
       return {
         ...state,
         loading: false,

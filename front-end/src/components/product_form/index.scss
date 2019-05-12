@@ -3,18 +3,29 @@
     src: url(../../fonts/Comfortaa.ttf); 
    }
 
-.loginForm{
+.productForm{
     padding-top: 20px !important;
     font-family: Comfortaa !important;
    
+
+    .productForm_text{
+        color: white;
+      
     }
-    .message_signup{
-    
-      font-family:Comfortaa !important;
-      text-align: center;
-   
+    .menu__style_form{
+        height: 29vh;
+        width: 100% !important;
+        overflow-y:scroll;
+      
+    }
+    .picked{
+  
+    box-shadow: 0 0 40px rgb(87, 90, 87) inset; 
+    }
     
 }
+
+
 
 
 .button_signup{     

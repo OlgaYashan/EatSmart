@@ -1,73 +1,73 @@
 import defaultState from "../defaultState";
 import {
-  LOAD_USER,
-  LOAD_USER_SUCCESS,
-  LOAD_USER_ERROR,
-  UPDATE_USER,
-  UPDATE_USER_SUCCESS,
-  UPDATE_USER_ERROR,
-  ADD_USER,
-  ADD_USER_SUCCESS,
-  ADD_USER_ERROR
+  LOAD_DIET,
+  LOAD_DIET_SUCCESS,
+  LOAD_DIET_ERROR,
+  UPDATE_DIET,
+  UPDATE_DIET_SUCCESS,
+  UPDATE_DIET_ERROR,
+  ADD_DIET,
+  ADD_DIET_SUCCESS,
+  ADD_DIET_ERROR
 
 } from "./actionTypes";
 
-export default function userReducer(state = defaultState.user, action) {
+export default function dietReducer(state = defaultState.diet, action) {
   switch (action.type) {
-    case LOAD_USER: {
+    case LOAD_DIET: {
       return {
         ...state,
         loading: true
       };
     }
-    case LOAD_USER_SUCCESS: {
+    case LOAD_DIET_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        diets: action.payload.diets,
         loading: false
       };
     }
-    case LOAD_USER_ERROR: {
+    case LOAD_DIET_ERROR: {
       return {
         ...state,
         loading: false,
         error: action.payload.error
       };
     }
-    case UPDATE_USER: {
+    case UPDATE_DIET: {
       return {
         ...state,
         loading: true
       };
     }
-    case UPDATE_USER_SUCCESS: {
+    case UPDATE_DIET_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        diet: action.payload.diet,
         loading: false
       };
     }
-    case UPDATE_USER_ERROR: {
+    case UPDATE_DIET_ERROR: {
       return {
         ...state,
         loading: false,
         error: action.payload.error
       };
     }
-    case ADD_USER: {
+    case ADD_DIET: {
       return {
         ...state,
         loading: true
       };
     }
-    case ADD_USER_SUCCESS: {
+    case ADD_DIET_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
+        diet: action.payload.diet,
         loading: false
       };
     }
-    case ADD_USER_ERROR: {
+    case ADD_DIET_ERROR: {
       return {
         ...state,
         loading: false,

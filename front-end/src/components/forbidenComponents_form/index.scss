@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
+.menu__style{
+    overflow-y: scroll;
+    max-height: 40vh;
+    overflow-x: hidden;
+    width: 28vw !important;
+    
+}
+.card__style{
+    height: 100%;
+    
+    
+    .img{
+       position: absolute;
+       right: 20px;
+    }
+   
+}
+.header__style{
+    font-family: Comfortaa !important; 
+    color: rgb(54, 51, 51) !important;
+    margin-bottom: 2vh !important;
+}

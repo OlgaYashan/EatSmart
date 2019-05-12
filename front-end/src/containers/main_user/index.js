@@ -10,21 +10,25 @@ import { Grid} from 'semantic-ui-react'
 import history from "../../history";
 
  class MainUser extends Component{
+    componentDidMount = () => {
+        this.props.loadDiets();
+      };
+    
     redirect =()=>{
         history.push("/");
     }
     render(){
-        const {testStore, error} = this.props;
-        console.log(testStore.user.user);
-        return( <Fragment >{(testStore.user.user.login =="999") || (testStore.user.user.login =="") && this.redirect()}
-                  {(testStore.user.user.login !="999") && (testStore.user.user.login !="") && <Grid >
+        const {user, error} = this.props;
+        console.log(user);
+        return( <Fragment >{(user.login =="999") || (user.login =="") && this.redirect()}
+                  {(user.login !="999") && (user.login !="") && <Grid >
                         <Grid.Row columns={2}>
                             <Grid.Column width={4}>
-                                <AsideUser user={testStore.user.user}/>
+                                <AsideUser user={user}/>
                             </Grid.Column>
                             <Grid.Column width={12}>
                                 
-                                     <ProductGridUser user={testStore.user.user}  source={testStore.user.user.lastProducts} />
+                                     <ProductGridUser user={user}  source={user.lastProducts} userUpdate={this.props.updateUser} diets={this.props.diets} loadDiets={this.props.loadDiets} components={this.props.components} loadComponents={this.props.loadComponents}/>
                                 
                              </Grid.Column>       
                         </Grid.Row> 
@@ -36,10 +40,8 @@ import history from "../../history";
 }
 
 export default connect(
-    state=>({
-        testStore:state
-    }),
-    dispatch => ({})
+    mapStateToProps,
+  mapDispatchToProps
 )(MainUser);
 
 

@@ -1,0 +1,61 @@
+.subheader{
+    padding-bottom: 10px !important;
+}
+.Grid__style{
+    overflow-y:scroll;
+    height:70vh;
+    padding-left: 3rem !important;
+    .unstyled-button{
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        text-align: left !important;
+    }
+    .unstyled-button:focus {
+        border: none !important;
+        outline : none; 
+
+       
+    }
+    .card__style:hover{
+        box-shadow: 0 20px 28px rgba(0,0,0,0.25), 0 20px 10px rgba(0,0,0,0.22);
+    }
+    .card_active{
+        border: 4px solid;
+        border-image-source: linear-gradient(45deg, rgb(0,143,104), rgb(250,224,66));
+        border-image-slice: 1;
+       
+    }
+    .componentGrid{
+        overflow-y:scroll;
+        height:7vh;
+        width: 20vw;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1) inset; 
+      
+      
+        
+    }
+    .card__style{
+        width:22vw; 
+        padding: 10px;
+        margin: 0 !important;
+        .content{
+            width: 17vw; 
+        }
+        .component{
+            
+            width: 25vw; 
+            padding: 5px ;
+            .info_header{
+                margin: 0 !important;
+                padding-bottom: 0.5rem;
+            }
+        }
+    }
+
+    .column{
+        height: 31rem;
+    }
+}

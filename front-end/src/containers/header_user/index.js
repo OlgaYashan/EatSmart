@@ -10,17 +10,17 @@ import history from "../../history";
 export class UserHeader extends Component{
 
     authorization = (login, password)=>{
-        this.props.authorizeUser(login,password);
-        const { error, loading, user } = this.props;
-        
-        
-     
+        this.props.authorizeUser(login,password);  
+    }
+
+    registration = (login,password,name,surname,gender,age)=>{
+        this.props.registrationUser(login,password,name,surname,gender,age,"user",0);
     }
        
     render(){
         const { error, loading, user } = this.props;
         return( <Fragment>
-                    <Header user={user} error={error} loading={loading} authorization={this.authorization} />
+                    <Header registration={this.registration} user={user} error={error} loading={loading} authorization={this.authorization} />
                 </Fragment>
         )
     }

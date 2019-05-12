@@ -1,14 +1,30 @@
 import React, {Component} from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment,Modal,Icon } from 'semantic-ui-react'
 import LogoImg from "./logo.png"
 import "./index.scss"; 
 import history from "../../history";
+import SignUpForm from "../signup_form";
 
 export default class LoginForm extends Component {
     state = {
         login:"",
         password:"",
-        messageOpened: true
+        messageOpened: false,
+        modal:false
+    }
+
+
+    handleExit=()=>{
+      this.close();
+      this.props.openLogin();
+
+    }
+    close = ()=>{
+      this.setState({modal:false});
+      this.props.closeLogin();
+    }
+    open =()=>{
+      this.setState({modal:true});
     }
 
     handleNotTyping = () =>{ this.setState({messageOpened:false});}
@@ -26,12 +42,13 @@ export default class LoginForm extends Component {
     
        
     }
+ 
 
     openMessage = () =>{
       return(<Message
         error
-        header="Oops..."
-        content='Wrong login or password. Please, try again!'
+        header="Ой..."
+        content='Введіть правильний логін та пароль!'
         /> )
     }
     closeMessage = () =>{
@@ -43,7 +60,7 @@ export default class LoginForm extends Component {
     }
 
     render(){
-      const {error, loading} = this.props;
+      const {error, loading, registration} = this.props;
       const {messageOpened} = this.state;
         return(<div className='login-form'>
         
@@ -82,7 +99,21 @@ export default class LoginForm extends Component {
               </Segment>
             </Form>
             <Message color ="olive">
-              Ще не зарєстрований? Зареєструватися
+              Ще не зарєстровані? 
+              <br/>
+              <Modal open={this.state.modal} onClose={this.close}   size="mini" dimmer="blurring" trigger={<button onClick={this.open}className="button_signup">Зареєструватися</button>}>
+                                
+                                <Modal.Content>
+                                <SignUpForm registration={registration}/>
+                                <Message className="message_signup" color ="olive">
+                                    Вже зарєстровані? 
+                                      <br/>
+                                    <button  onClick={this.handleExit} className="button_signup"> Увійти</button>
+                                   
+                                                
+                                  </Message>
+                                </Modal.Content>
+                            </Modal>
             </Message>
           </Grid.Column>
         </Grid>

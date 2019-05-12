@@ -1,15 +1,19 @@
 import { loadProducts } from "../../logic/products/actions";
-import {updateUserProducts} from "../../logic/user/actions"
+import {updateUser} from "../../logic/user/actions"
+import { loadComponents } from "../../logic/component/actions";
 
 export function mapStateToProps(state) {
   const { products, loading, error } = state.products;
   const { user } = state.user;
+  
+  const {components, component} = state.component;
 
   return {
     products,
     loading,
     error, 
-    user
+    user,
+    components
   };
 }
 
@@ -18,8 +22,11 @@ export function mapDispatchToProps(dispatch) {
     loadProducts() {
       dispatch(loadProducts());
     },
-    updateUserProducts(user){
-      dispatch(updateUserProducts(user))
+    updateUser(user){
+      dispatch(updateUser(user))
+    },
+    loadComponents(){
+      dispatch(loadComponents())
     }
   };
 }

@@ -1,27 +1,78 @@
-.Search{
-    padding-top: 6.3rem !important;
-    position: relative;
-    padding-left: 57vw !important;   
-    .results{
-        margin-left: 54rem !important;
-        overflow-y:scroll;
-        max-height:20vh;
+.modal_info{
+    border: 1px solid rgb(186, 248, 63);
+    width: 38vw !important;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    .rate{
+        align-self: flex-end;
+        margin: 10px;
     }
+    .segment__style{
+        
+        overflow-y:scroll;
+        height: 27vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1) inset; 
+        padding: 10px;
+        }
     
 }
 
-.cardGrid{
+
+.ui.attached.header {
+    text-align: start;
+}
+
+.modal{
+    background-color: rgb(189, 189, 58) !important;
+    
+}
+.top_pannel{
+    padding-top: 3.3rem !important;
+    display:flex;
+
+    .Search_user{
+        
+        position: relative;
+        padding-left: 35vw !important;   
+        .results{
+            margin-left: 34rem !important;
+            overflow-y:scroll;
+            max-height:20vh;
+        }
+        
+    }
+    
+}
+.divider{
+    margin: 0.5rem 0 !important;
+    .divider__color{
+        color: rgb(117, 117, 117);
+            font-family: Comfortaa !important; 
+            font-size:  1em;
+    }
+}
+.cardGrid_user{
     overflow-y:scroll;
-    height:75vh;
+    height:70vh;
+    width:75vw;
     padding-left: 1rem !important; 
     margin-top: 1rem !important;
     box-shadow: 0 0 40px rgba(0, 0, 0, .1) inset; 
+   
     .unstyled-button{
         background-color: Transparent;
         background-repeat:no-repeat;
         border: none;
         cursor:pointer;
         overflow: hidden;
+        
+            
+          .forbidenProduct{
+            border: 4px solid;
+        border-image-source: linear-gradient(45deg, rgb(248, 113, 96), rgb(233, 169, 149));
+        border-image-slice: 1;
+        }
     }
     .unstyled-button:focus {
         border: none !important;
@@ -33,10 +84,14 @@
     }
     .card{
         max-width: 16vw; 
+        .content{
+            max-width: 15vw; 
+            text-align: left !important;
+        }
     }
 
     .column{
-        height: 13rem;
+        height: 25rem;
     }
 
    

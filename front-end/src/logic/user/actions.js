@@ -1,4 +1,4 @@
-import { LOAD_USER, DELETE_USER, UPDATE_USER_PRODUCTS } from "./actionTypes";
+import { LOAD_USER, DELETE_USER, UPDATE_USER,ADD_USER } from "./actionTypes";
 
 export function loadUser() {
   return {
@@ -20,9 +20,16 @@ export function authorizeUser(login,password) {
   };
 }
 
-export function updateUserProducts(arr){
+export function registrationUser(login,password,name,surname,gender,age,role,rating){
+  return {
+    type: ADD_USER,
+    payload: { login,password,name,surname,gender,age,role,rating}
+  };
+}
+
+export function updateUser(arr){
   return{
-    type: UPDATE_USER_PRODUCTS,
+    type: UPDATE_USER,
     payload:{arr}
   }
 }

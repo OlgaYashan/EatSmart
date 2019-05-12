@@ -8,6 +8,7 @@ import { mapStateToProps, mapDispatchToProps } from "./container";
 class ProductsGrid extends Component {
   componentDidMount = () => {
     this.props.loadProducts();
+    this.props.loadComponents();
   };
 
   myIndexOf = (arr, o) =>{  
@@ -36,12 +37,12 @@ class ProductsGrid extends Component {
     }
     var newUser = this.props.user;
     newUser.lastProducts =  stateArr;
-    this.props.updateUserProducts(newUser);
+    this.props.updateUser(newUser);
   }
 
   renderProducts = () => {
     const { products, user } = this.props;
-    return (<GridSearch updateProductsArray={this.updateProductsArray} user={user} source={products}/>);
+    return (<GridSearch updateProductsArray={this.updateProductsArray} user={user} source={products} components={this.props.components} />);
   };
 
   render() {

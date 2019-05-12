@@ -1,0 +1,21 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
+.loginForm{
+    padding-top: 5px !important;
+    font-family: Comfortaa !important;
+    .text__color{
+      .text{
+        color:rgb(133, 179, 27);
+      }
+    }
+    
+}
+.message{
+  padding: 0.5rem 0 !important;
+   .content{
+     max-width: 23rem;
+   }
+}

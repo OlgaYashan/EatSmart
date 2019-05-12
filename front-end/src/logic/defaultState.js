@@ -4,6 +4,22 @@ const state = {
     loading: false,
     error: null
   },
+  component:{
+    components: [],
+    loading: false,
+    error: null,
+    component:{
+      name:"",
+      type:"",
+      description:""
+    }
+
+  },
+  diet:{
+    diets:[],
+    loading: false,
+    error: null
+  },
   user:{
     user:{
       login:"",

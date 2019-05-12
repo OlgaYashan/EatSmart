@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
-import { Image, Grid,Card, Header,Search, Label, Icon, List  } from 'semantic-ui-react'
+import { Image, Grid,Card, Header,Search, Label, Icon, List, Modal, Button  } from 'semantic-ui-react'
 import "./index.scss"; 
 import { finished } from 'stream';
 import img from "../../img/product.png"
+import ProductForm from '../product_form';
 
 
 
@@ -89,10 +90,11 @@ export default class GridSearch extends Component{
             this.state.lastProducts.unshift(obj); 
           }
             
-          this.setState({object:obj});
+          
           
 
         }
+        this.setState({object:obj});
         
       }
 
@@ -108,7 +110,7 @@ export default class GridSearch extends Component{
             return(
                     <Grid.Column key={i} className="column">
                     <button   onClick={()=>this.handleOnClick(obj)} className="unstyled-button">
-                    <Card 
+                   {(this.props.user.role !="admin")&&  <Card 
     image={img}
     header={obj.name}
     meta={"Виробник: "+obj.name}
@@ -116,7 +118,20 @@ export default class GridSearch extends Component{
     <Icon name='star outline' />
     {obj.rating}
   </a>}
-  />
+  />}
+  {(this.props.user.role=="admin")&&  <Card 
+    image={img}
+    header={obj.name}
+    meta={"Виробник: "+obj.name}
+    extra={<div className='ui two buttons'>
+    <Button size="tiny" basic color='olive'>
+      <Icon name="edit"/>
+    </Button>
+    <Button size="tiny" basic color='grey'>
+    <Icon name="trash alternate"/>
+    </Button>
+  </div>}
+  />}
                             </button>
                         </Grid.Column>
             );
@@ -141,7 +156,7 @@ export default class GridSearch extends Component{
             return(<List.Item>
               <List.Icon name='leaf' size='large' verticalAlign='middle' />
               <List.Content>
-                <List.Header as='a'>{component}</List.Header>
+                <List.Header as='a'>{component.name}</List.Header>
                 <List.Description as='a'>Updated 10 mins ago</List.Description>
               </List.Content>
             </List.Item>);
@@ -166,8 +181,14 @@ export default class GridSearch extends Component{
                 
                 
                        <Grid.Row columns={2}>
-                      
+
                                 <Grid.Column width={12}>
+                                {(this.props.user.role=="admin")&& <div className="top_pannel_admin">
+                                <Modal closeIcon  size="small" dimmer="blurring" trigger={ <Button className="btn" size='small'  content='Додати продукт' color='olive' />}>
+                                <Modal.Content className="modal">
+                                    <ProductForm components={this.props.components}/>
+                                </Modal.Content>
+                            </Modal>
                                 <Search
                                     className="Search"
                                     loading={isLoading}
@@ -180,7 +201,22 @@ export default class GridSearch extends Component{
                                     resultRenderer={resultRenderer}
                                     {...this.props}
                                 />
-                                
+                                </div>}
+                                {(this.props.user.role !="admin")&& <div className="top_pannel_user">
+                               
+                                <Search
+                                    className="Search"
+                                    loading={isLoading}
+                                    onResultSelect={this.handleResultSelect}
+                                    onSearchChange={_.debounce(this.handleSearchChange, 500, {
+                                    leading: true,
+                                    })}
+                                    results={results}
+                                    value={value}
+                                    resultRenderer={resultRenderer}
+                                    {...this.props}
+                                />
+                                </div>}
                                 <Grid className="cardGrid" >
                                         {this.renderCardsRows()}
                                     </Grid>      

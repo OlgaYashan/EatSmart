@@ -1,12 +1,37 @@
-.Search{
-    padding-top: 6.3rem !important;
-    position: relative;
-    padding-left: 57vw !important;   
-    
-    
-}
+
 .ui.search .results {
     display: none !important;
+}
+
+
+.top_pannel_admin{
+    margin-top: 6.2rem !important;
+    display:flex;
+    .btn{
+        margin-left: 2rem;
+    }
+
+    .Search{
+        
+        position: relative;
+        padding-left: 46vw !important;   
+        
+        
+    }
+    
+}
+
+.top_pannel_user{
+    margin-top: 6.2rem !important;
+    display:flex;
+    .Search{
+        
+        position: relative;
+        padding-left: 58vw !important;   
+        
+        
+    }
+    
 }
 
 .cardGrid{
