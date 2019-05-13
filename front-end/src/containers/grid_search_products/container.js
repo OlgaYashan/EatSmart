@@ -1,15 +1,16 @@
-import { loadProducts } from "../../logic/products/actions";
+import { loadProducts, addProduct, deleteProduct, editProduct } from "../../logic/products/actions";
 import {updateUser} from "../../logic/user/actions"
 import { loadComponents } from "../../logic/component/actions";
 
 export function mapStateToProps(state) {
-  const { products, loading, error } = state.products;
+  const { products, product, loading, error } = state.products;
   const { user } = state.user;
   
   const {components, component} = state.component;
 
   return {
     products,
+    product,
     loading,
     error, 
     user,
@@ -27,6 +28,15 @@ export function mapDispatchToProps(dispatch) {
     },
     loadComponents(){
       dispatch(loadComponents())
+    },
+    addProduct(name,id_producer,components){
+      dispatch(addProduct(name,id_producer,components))
+    },
+    deleteProduct(product){
+      dispatch(deleteProduct(product))
+    },
+    editProduct(name,product){
+      dispatch(editProduct(name,product))
     }
   };
 }

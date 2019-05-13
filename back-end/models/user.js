@@ -5,14 +5,13 @@ const userSchema = new mongoose.Schema({
   password: String,
   name: String,
   surname: String,
-  age: { type: Number, min: 18, max: 65 },
+  age: Number,
   gender: String,
   role: String,
-  forbidenComponents: [String],
-  desises: [String],
+  forbidenComponents: [],
+  diet: {},
   rating: Number,
-  lastProducts: [],
-  lastComponentsId: [Number]
+  lastProducts: []
 });
 
 const User = mongoose.model("User", userSchema);

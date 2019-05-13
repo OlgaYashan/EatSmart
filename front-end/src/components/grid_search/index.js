@@ -5,6 +5,7 @@ import "./index.scss";
 import { finished } from 'stream';
 import img from "../../img/product.png"
 import ProductForm from '../product_form';
+import ProductEditeForm from '../edit_product_form';
 
 
 
@@ -17,7 +18,9 @@ export default class GridSearch extends Component{
         check: 0,
         array:[],
         innit:false,
-        lastProducts: []
+        lastProducts: [],
+        deletedProducts:[],
+        modal:false
       };
     
 
@@ -26,9 +29,15 @@ export default class GridSearch extends Component{
         
       }
 
+
     componentWillUnmount(){
         if(this.state.lastProducts.length !== 0){
             this.props.updateProductsArray(this.state.lastProducts);
+        }
+        if(this.state.deletedProducts.length !=0){
+          for (var i=0; i< this.state.deletedProducts.length; i++){
+            this.props.deleteProduct(this.state.deletedProducts[i]);
+          }
         }
       
     }
@@ -98,14 +107,29 @@ export default class GridSearch extends Component{
         
       }
 
-      
+    handleDelete =(obj)=>{
+      this.state.deletedProducts.unshift(obj);  
+    }
+
+    updateArray=(array)=>{
+      for (var i=0; i<array.length;i++){
+        if(this.myIndexOf(this.state.deletedProducts,array[i])!=-1){
+            var index = this.myIndexOf(array,array[i]);
+            array.splice(index,1);
+        }
+      }
+      return array;
+    }
 
 
     renderCardsColumn = () =>{
         var array;
         const {innit} = this.state;
+
         if (innit){ array = this.state.array;}
         else{ array = this.props.source;}
+        array = this.updateArray(array);
+        console.log(array);
         return array.map((obj, i) => {
             return(
                     <Grid.Column key={i} className="column">
@@ -124,10 +148,15 @@ export default class GridSearch extends Component{
     header={obj.name}
     meta={"Виробник: "+obj.name}
     extra={<div className='ui two buttons'>
-    <Button size="tiny" basic color='olive'>
+    <Modal open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true})}>
       <Icon name="edit"/>
-    </Button>
-    <Button size="tiny" basic color='grey'>
+    </Button>}>
+                                <Modal.Content className="modal">
+                                    <ProductEditeForm close={()=>this.setState({modal:false})} product={obj} editeProduct={this.props.editeProduct} loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
+                                </Modal.Content>
+                            </Modal>
+    
+    <Button size="tiny" basic color='grey' onClick={()=>this.handleDelete(obj)}>
     <Icon name="trash alternate"/>
     </Button>
   </div>}
@@ -186,7 +215,7 @@ export default class GridSearch extends Component{
                                 {(this.props.user.role=="admin")&& <div className="top_pannel_admin">
                                 <Modal closeIcon  size="small" dimmer="blurring" trigger={ <Button className="btn" size='small'  content='Додати продукт' color='olive' />}>
                                 <Modal.Content className="modal">
-                                    <ProductForm components={this.props.components}/>
+                                    <ProductForm loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
                                 </Modal.Content>
                             </Modal>
                                 <Search

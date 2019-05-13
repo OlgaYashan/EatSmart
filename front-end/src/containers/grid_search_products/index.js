@@ -11,6 +11,12 @@ class ProductsGrid extends Component {
     this.props.loadComponents();
   };
 
+  deleteProductandReload=(product)=>{
+
+    this.props.deleteProduct(product);
+
+  }
+
   myIndexOf = (arr, o) =>{  
     console.log(arr.length); 
     for (var i = 0; i < arr.length; i++) {
@@ -42,7 +48,7 @@ class ProductsGrid extends Component {
 
   renderProducts = () => {
     const { products, user } = this.props;
-    return (<GridSearch updateProductsArray={this.updateProductsArray} user={user} source={products} components={this.props.components} />);
+    return (<GridSearch editeProduct={this.props.editProduct} deleteProduct={this.deleteProductandReload} updateProductsArray={this.updateProductsArray} loadProducts={this.props.loadProducts}  addProduct={this.props.addProduct} user={user} source={products} components={this.props.components} />);
   };
 
   render() {

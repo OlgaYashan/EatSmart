@@ -34,7 +34,9 @@ const state = {
   products:{
     products: [],
     loading: false,
-    error: null
+    error: null,
+    product:{      
+    }
   }
 };
 

@@ -4,7 +4,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment,Modal,Icon, Menu } 
 import "./index.scss"; 
 import { loadProducts } from '../../logic/products/actions';
 
-export default class ProductForm extends Component {
+export default class EditeProductForm extends Component {
     state = {
         name:"",
         producer:"",
@@ -12,7 +12,8 @@ export default class ProductForm extends Component {
         activeObj:{},
         messageOpened: false,
         pickedArr: [],
-        addDone:false
+        addDone:false,
+        firstName:""
     }
 
     myIndexOf = (arr, o) =>{  
@@ -48,30 +49,38 @@ export default class ProductForm extends Component {
     }
 
 
-
+  componentWillMount(){
+    
+    const {product} = this.props;
+    this.setState({name:product.name,producer:product.id_producer,
+      pickedArr: product.components, firstName:product.name })
+  }
 
    
     handleName = e => { this.setState({name:e.target.value});  }
     handleProducer = e => { this.setState({producer:e.target.value});}
     handleSubmit = () =>{
      
-      const {addProduct, loadProducts} = this.props;
+      const {editeProduct} = this.props;
       const {name,producer,pickedArr} = this.state;
-      addProduct(name,producer,pickedArr);    
-      this.setState({messageOpened:true, addDone:true, name:"",producer:"", pickedArr:[]});
+      var newProduct = this.props.product;
+      newProduct.name=name;
+      newProduct.producer=producer;
+      newProduct.components=pickedArr;
+      console.log(this.props.product.name);
+      editeProduct(this.state.firstName,newProduct);
+      this.setState({messageOpened:true});
+   
+      this.props.close();
     }
 
  
-    componentWillUnmount=()=>{
-    
-      this.props.loadProducts();   
-    }
-
+ 
     openMessage = () =>{
       return(<Message className="message"
         error
-        header="Продукт успішно додано!"
-        content='створіть новий або закрийте це вікно'
+        header="Продукт успішно змінено!"
+        content='продовжуйте зміни або закрийте це вікно'
         /> )
     }
     closeMessage = () =>{
@@ -104,7 +113,7 @@ export default class ProductForm extends Component {
         return(   
             <div className="productForm">
              <Header as='h2'  textAlign='center' className="productForm_text" >
-              Додати продукти
+              Змінити продукт
             </Header>
 {messageOpened && this.openMessage()}
         <Grid  textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
@@ -131,7 +140,7 @@ export default class ProductForm extends Component {
                   value={this.state.producer}
                 />
                 <Button color='olive' fluid size='large' onClick={this.handleSubmit}>
-                  Додати
+                  Змінити
                 </Button>
               </Segment>
             </Form>
