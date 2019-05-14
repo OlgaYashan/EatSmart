@@ -36,6 +36,10 @@ export default class SignupForm extends Component {
     handleLogin = e => { this.setState({login:e.target.value, name:e.target.value});  }
     handlePassword = e => { this.setState({password:e.target.value});}
 
+    redirect =()=>{
+      history.push("/user");
+  }
+ 
     handleSubmit = () =>{
       const {registration, error,loading} = this.props;
       const {login, password, name, surname, gender,age,check} = this.state;
@@ -45,6 +49,7 @@ export default class SignupForm extends Component {
       }
       else{
         registration(login,password,name,surname,gender,age);
+        this.redirect();
       }
               
     }

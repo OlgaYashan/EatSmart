@@ -3,6 +3,8 @@ import { Button, Form, Grid, Header, Image, Message, Segment,Modal,Icon } from '
 import LogoImg from "./logo.png"
 import "./index.scss"; 
 import history from "../../history";
+
+import {Link} from 'react-router-dom'
 import SignUpForm from "../signup_form";
 
 export default class LoginForm extends Component {
@@ -36,12 +38,13 @@ export default class LoginForm extends Component {
       this.setState({messageOpened:true});
       const {authorization, error,loading} = this.props;
       const {login, password} = this.state;
-      authorization(login,password);
-      
-      
+      authorization(login,password);      
     
        
     }
+    redirect =()=>{
+      history.push("/user");
+  }
  
 
     openMessage = () =>{
@@ -93,8 +96,8 @@ export default class LoginForm extends Component {
                   onChange={this.handlePassword}
                   onClick={this.closeMessage}
                 />
-                <Button color='olive' fluid size='large' onClick={this.handleSubmit}>
-                  Увійти
+                <Button color='olive' fluid size='large'  onClick={this.handleSubmit}>
+               Увійти
                 </Button>
               </Segment>
             </Form>

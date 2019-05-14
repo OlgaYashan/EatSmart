@@ -1,0 +1,57 @@
+@font-face {
+    font-family: Comfortaa; 
+    src: url(../../fonts/Comfortaa.ttf); 
+   }
+
+.productForm{
+    padding-top: 20px !important;
+    font-family: Comfortaa !important;
+   
+    .message{
+      .content{
+        padding: 0.5rem 0 !important;
+        max-width: 50rem !important;
+        margin: 0 20px !important;
+        .header{font-family: Comfortaa !important;}
+        p{
+          font-family: Comfortaa !important;
+          font-size: 1.1em;
+        }
+      }
+     
+    }
+    .productForm_text{
+        color: white;
+      
+    }
+    .menu__style_form{
+        height: 29vh;
+        width: 100% !important;
+        overflow-y:scroll;
+      
+    }
+    .picked{
+  
+    box-shadow: 0 0 40px rgb(87, 90, 87) inset; 
+    }
+    
+}
+
+
+
+
+.button_signup{     
+  padding: 0;
+  border: none;
+  font-family:Comfortaa !important;
+  color: rgb(245, 162, 9);
+  text-decoration: underline;
+  background-color: transparent;
+/* отображаем курсор в виде руки при наведении; некоторые
+  считают, что необходимо оставлять стрелочный вид для кнопок */
+  cursor: pointer;
+
+}
+
+
+

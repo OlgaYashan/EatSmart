@@ -1,0 +1,39 @@
+.body{
+    width: 80vw;
+    margin: 0 10rem;
+    padding-top: 7rem;
+    
+    .body-content{
+        max-height: 30rem;
+        overflow-y: scroll;
+
+    .table_body{
+        .cell{
+            word-wrap: break-word;  
+        }
+        .btn-edit{
+            color: rgb(174, 177, 166);
+            text-decoration: underline;
+        }
+        .btn-delete{
+            color: rgb(255, 165, 104); 
+            text-decoration: underline;
+        }
+        .unstyled-button{
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            text-align: left !important;
+        }
+        .unstyled-button:focus {
+            border: none !important;
+            outline : none; 
+    
+           
+        }
+    }
+}
+}
+

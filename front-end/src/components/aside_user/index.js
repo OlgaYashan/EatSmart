@@ -15,7 +15,7 @@ export default class AsideUser extends Component{
              <List.Icon name='leaf' size='large' verticalAlign='middle' />
              <List.Content>
                <List.Header as='a'>{component.name}</List.Header>
-               <List.Description as='a'>Updated 10 mins ago</List.Description>
+               <List.Description as='a'>{component.type}</List.Description>
              </List.Content>
            </List.Item>);
         });

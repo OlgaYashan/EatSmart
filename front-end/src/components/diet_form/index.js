@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment,Modal,Card, Icon, List } from 'semantic-ui-react'
-import male from "./male1.png"
+import male from "./diet.jpg"
 import './index.scss' 
 
 
@@ -39,7 +39,7 @@ export default class ForbidenComponentsForm extends Component {
            <List.Icon name='leaf' size='large' verticalAlign='middle' />
            <List.Content>
              <List.Header as='a'>{component.name}</List.Header>
-             <List.Description as='a'>Updated 10 mins ago</List.Description>
+             <List.Description as='a'>{component.type}</List.Description>
            </List.Content>
          </List.Item>);
       });

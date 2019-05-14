@@ -6,24 +6,24 @@ export function loadComponents() {
   };
 }
 
-export function deleteComponent(id) {
+export function deleteComponent(component) {
   return {
     type: DELETE_COMPONENT,
-    payload: { id }
+    payload: { component }
   };
 }
 
-export function addComponent(login,password,name,surname,gender,age,role,rating){
+export function addComponent(name, type, description){
   return {
     type: ADD_COMPONENT,
-    payload: { login,password,name,surname,gender,age,role,rating}
+    payload: { name, type, description}
   };
 }
 
-export function updateComponent(arr){
+export function updateComponent(name,component){
   return{
     type: UPDATE_COMPONENT,
-    payload:{arr}
+    payload:{name, component}
   }
 }
 

@@ -11,6 +11,7 @@ export class UserHeader extends Component{
 
     authorization = (login, password)=>{
         this.props.authorizeUser(login,password);  
+        
     }
 
     registration = (login,password,name,surname,gender,age)=>{

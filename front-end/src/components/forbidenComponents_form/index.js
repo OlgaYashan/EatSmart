@@ -98,8 +98,8 @@ export default class ForbidenComponentsForm extends Component {
       <Card.Content>
       <Image className="img" size='tiny' src={male} />
         <Card.Header>{this.state.activeObj.name}</Card.Header>
-        <Card.Meta>New User</Card.Meta>
-        <Card.Description>{this.state.activeObj.description}</Card.Description>
+        <Card.Meta>{this.state.activeObj.type}</Card.Meta>
+        <Card.Description className="desc_style">{this.state.activeObj.description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>

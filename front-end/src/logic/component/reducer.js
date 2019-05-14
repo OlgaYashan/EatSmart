@@ -8,7 +8,11 @@ import {
   UPDATE_COMPONENT_ERROR,
   ADD_COMPONENT,
   ADD_COMPONENT_SUCCESS,
-  ADD_COMPONENT_ERROR
+  ADD_COMPONENT_ERROR,
+  DELETE_COMPONENT,
+  DELETE_COMPONENT_SUCCESS,
+  DELETE_COMPONENT_ERROR
+
 
 } from "./actionTypes";
 
@@ -68,6 +72,26 @@ export default function componentReducer(state = defaultState.component, action)
       };
     }
     case ADD_COMPONENT_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error
+      };
+    }
+    case DELETE_COMPONENT: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+    case DELETE_COMPONENT_SUCCESS: {
+      return {
+        ...state,
+        component: action.payload.component,
+        loading: false
+      };
+    }
+    case DELETE_COMPONENT_ERROR: {
       return {
         ...state,
         loading: false,

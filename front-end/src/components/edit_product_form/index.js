@@ -69,8 +69,7 @@ export default class EditeProductForm extends Component {
       newProduct.components=pickedArr;
       console.log(this.props.product.name);
       editeProduct(this.state.firstName,newProduct);
-      this.setState({messageOpened:true});
-   
+      this.setState({messageOpened:true}); 
       this.props.close();
     }
 

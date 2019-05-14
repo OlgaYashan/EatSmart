@@ -148,11 +148,11 @@ export default class GridSearch extends Component{
     header={obj.name}
     meta={"Виробник: "+obj.name}
     extra={<div className='ui two buttons'>
-    <Modal open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true})}>
+    <Modal closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true})}>
       <Icon name="edit"/>
     </Button>}>
                                 <Modal.Content className="modal">
-                                    <ProductEditeForm close={()=>this.setState({modal:false})} product={obj} editeProduct={this.props.editeProduct} loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
+                                    <ProductEditeForm  close={()=>this.setState({modal:false})} product={obj} editeProduct={this.props.editeProduct} loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
                                 </Modal.Content>
                             </Modal>
     
@@ -186,7 +186,7 @@ export default class GridSearch extends Component{
               <List.Icon name='leaf' size='large' verticalAlign='middle' />
               <List.Content>
                 <List.Header as='a'>{component.name}</List.Header>
-                <List.Description as='a'>Updated 10 mins ago</List.Description>
+                <List.Description as='a'>{component.type}</List.Description>
               </List.Content>
             </List.Item>);
          });

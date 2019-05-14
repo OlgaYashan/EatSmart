@@ -14,6 +14,7 @@ export default class Header extends Component{
         login: "",
         password:"",
         modal:false
+  
        
     }
 
@@ -41,12 +42,12 @@ export default class Header extends Component{
        const {authorization} = this.props;
        authorization("999","999");
        history.push("/");
-          
+    
      
         
      }
 
-     close
+     
  
 
     render(){
@@ -62,7 +63,7 @@ export default class Header extends Component{
                         <Menu.Item as='a'><Link to={"/products"}>Продукти</Link></Menu.Item>
                         <Dropdown item simple text='Меню'>
                         <Dropdown.Menu>
-                            <Dropdown.Item>Компоненти</Dropdown.Item>
+                            <Dropdown.Item ><Link className="link_style" to={"/components"}>Компоненти</Link></Dropdown.Item>
                             <Dropdown.Item>Дієти</Dropdown.Item>
                             <Dropdown.Divider />
                             <Dropdown.Header>Навчання</Dropdown.Header>
@@ -86,14 +87,17 @@ export default class Header extends Component{
                             
                             </Menu.Item>
                             <Button onClick={this.handleExit} color="black"><Icon size= "large" className="exit" inverted name="sign-out" /></Button>
-                            </Fragment>
+                            </Fragment> 
+                            
                         }
+                       
                         {!this.checkUser() && 
                             <Modal  open={this.state.modal} onClose={this.close} size="mini" dimmer="blurring" trigger={ <Menu.Item as='a' onClick={this.open} position='right'>Увійти</Menu.Item >}>
                                 <Modal.Content>
-                                    <LoginForm registration={registration} closeLogin={this.close} openLogin={this.open} error={error} authorization={authorization} />
+                                    <LoginForm user={this.props.user} registration={registration} closeLogin={this.close} openLogin={this.open} error={error} authorization={authorization} />
                                 </Modal.Content>
                             </Modal>}
+                            
                     </Container>
                 </Menu>
             </Fragment>
