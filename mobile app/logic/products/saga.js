@@ -10,7 +10,7 @@ import api from "../../services/api";
 function* loadProducts(action) {
   try {
 //console.log('try');
-const response = yield call(api.sendRequest, "api/product/product?name=Vlad", "get");
+const response = yield call(api.sendRequest, "api/product/product?name=Чай", "get");
     //const response = yield call(fetchF);
     //var arr = [{title:"jjj", description:"2"},{title:"ljjl", description:"1"},{title:"ll1l", description:"4"},{title:"lbll", description:"99"},{title:"ljjl", description:"6"},{title:"ll1l", description:"5"},{title:"lbll", description:"00"},{title:"ljjl", description:"13"},{title:"ll1l", description:"41"},{title:"lbll", description:"1"},{title:"ljjl", description:"71"},{title:"ll1l", description:"166"},{title:"lbll", description:"144"},{title:"ljjl", description:"18"},{title:"ll1l", description:"71"},{title:"lbll", description:"61"}];
     //const response = {

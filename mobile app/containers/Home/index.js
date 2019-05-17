@@ -5,6 +5,8 @@ import {View, Text} from 'react-native';
 
 import { mapStateToProps, mapDispatchToProps } from "./container";
 
+
+
 class Home extends Component{
 
     state = {
@@ -20,10 +22,9 @@ class Home extends Component{
 
     render(){
         return(
-      
-                <Text>Hello</Text>
-        
-      
+                
+                <Text>{this.state.ol}</Text>
+             
         );
     }
 }

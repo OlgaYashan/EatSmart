@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "my-new-project",
+    "name": "EatSmart",
+    "slug": "eatsmart",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -27,8 +27,11 @@
     },
     "android": {
       "permissions": [
-        "INTERNET"
-      ]
-    }
+        "INTERNET",
+        "CAMERA"
+      ],
+      "package":"com.lingonsaft.myapp"
+    },
+    "description": ""
   }
 }
