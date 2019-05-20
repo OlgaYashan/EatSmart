@@ -1,34 +1,21 @@
 import { put, all, takeLatest } from "redux-saga/effects";
 import { call } from "redux-saga/effects";
 
+
 import * as actionTypes from "./actionTypes";
 
 import api from "../../services/api";
 
-//const fetchF = () =>fetch("http://192.168.1.137:3000/api/product/product?name=Vlad");
-
 function* loadProducts(action) {
   try {
-//console.log('try');
-const response = yield call(api.sendRequest, "api/product/product?name=Чай", "get");
-    //const response = yield call(fetchF);
-    //var arr = [{title:"jjj", description:"2"},{title:"ljjl", description:"1"},{title:"ll1l", description:"4"},{title:"lbll", description:"99"},{title:"ljjl", description:"6"},{title:"ll1l", description:"5"},{title:"lbll", description:"00"},{title:"ljjl", description:"13"},{title:"ll1l", description:"41"},{title:"lbll", description:"1"},{title:"ljjl", description:"71"},{title:"ll1l", description:"166"},{title:"lbll", description:"144"},{title:"ljjl", description:"18"},{title:"ll1l", description:"71"},{title:"lbll", description:"61"}];
-    //const response = {
-    //  data: arr
-    //};
-    var arr= [];
-    //console.log(response);
-    arr[0] = response.data;
-    //console.log(response);
-
+    const response = yield call(api.sendRequest, "api/product/all", "get");
     yield put({
       type: actionTypes.LOAD_PRODUCTS_SUCCESS,
       payload: {
-        products: arr
+        products: response.data
       }
     });
   } catch (err) {
-      //console.log(err);
     yield put({
       type: actionTypes.LOAD_PRODUCTS_ERROR,
       payload: {
@@ -38,6 +25,85 @@ const response = yield call(api.sendRequest, "api/product/product?name=Чай", 
   }
 }
 
+function* addProduct(action) {
+  console.log(action.payload);
+  try {
+    const response = yield call(api.sendRequest, "api/product/", "post",action.payload);
+    yield put({
+      type: actionTypes.ADD_PRODUCT_SUCCESS,
+      payload: {
+        product: response.data
+      }
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.ADD_PRODUCT_ERROR,
+      payload: {
+        error: err.response.data
+      }
+    });
+  }
+}
+
+function* deleteProduct(action) {
+  console.log(action.payload);
+  try {
+    const response = yield call(api.sendRequest, "api/product/product?name="+action.payload.product.name, "delete",action.payload);
+    yield put({
+      type: actionTypes.DELETE_PRODUCT_SUCCESS,
+      payload: {
+        product: response.data
+      }
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.DELETE_PRODUCT_ERROR,
+      payload: {
+        error: err.response.data
+      }
+    });
+  }
+}
+
+function* editProduct(action) {
+  try {
+    console.log(action.payload);
+    const response = yield call(api.sendRequest, "api/product/product?name="+action.payload.name, "put", action.payload.product);
+    yield put({
+      type: actionTypes.EDIT_PRODUCT_SUCCESS,
+      payload: {
+        product: response.data
+      }
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.EDIT_PRODUCT_ERROR,
+      payload: {
+        error: err.response.data
+      }
+    });
+  }
+}
+
+function* loadProduct(action) {
+  try {
+    const response = yield call(api.sendRequest, "api/product/barCode?barCode="+action.payload.barCode, "get");
+    yield put({
+      type: actionTypes.LOAD_PRODUCT_BAR_CODE_SUCCESS,
+      payload: {
+        product: response.data
+      }
+    });
+  } catch (err) {
+    yield put({
+      type: actionTypes.LOAD_PRODUCT_BAR_CODE_ERROR,
+      payload: {
+        error: err.response.data
+      }
+    });
+  }
+}
+
 export default function* productsSaga() {
-  yield all([takeLatest(actionTypes.LOAD_PRODUCTS, loadProducts)]);
+  yield all([takeLatest(actionTypes.LOAD_PRODUCTS, loadProducts),takeLatest(actionTypes.ADD_PRODUCT, addProduct),takeLatest(actionTypes.EDIT_PRODUCT, editProduct),takeLatest(actionTypes.DELETE_PRODUCT, deleteProduct),takeLatest(actionTypes.LOAD_PRODUCT_BAR_CODE, loadProduct)  ]);
 }

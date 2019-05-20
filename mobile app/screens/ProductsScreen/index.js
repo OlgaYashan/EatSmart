@@ -1,16 +1,83 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
-import {Icon, Button, Container, Header, Content, Left} from 'native-base';
+import {  Container,Content} from 'native-base';
+import { mapStateToProps, mapDispatchToProps } from "./container";
+import {connect} from 'react-redux';
+import { Card,Icon, ListItem,Button,Header } from 'react-native-elements';
+import img from './product.png'
 
-export default class ProductsScreen extends Component{
+
+ class ProductsScreen extends Component{
+
+    componentWillMount(){
+        this.props.loadProducts();
+    }
+
+    renderComponents=(product)=>{
+        return product.components.map((component, i) => {
+            return( <ListItem
+                key={i}
+                leftIcon={<Icon name='pocket' type='zocial' color='#A0CB1B'/>}
+                title={component.name}
+                subtitle={component.type}
+              />);
+        
+        });
+    }
+
+    renderCards=()=>{
+        return this.props.products.map((product, i) => {
+        return(
+            <Card
+                key={i}
+                title={product.name}
+                >
+                  <Image
+                    style={{ width: 200, height: 200, alignSelf: 'center' }}
+                    
+                    source={img}
+                />    
+                <Text style={{marginBottom: 10, color:'#696969'}}>
+                    {"виробник: " + product.id_producer}
+                </Text>
+                {/*<Content>
+                    {this.renderComponents(product)}
+                </Content>*/}
+                <Button  
+                    buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:'#A0CB1B'}}
+                    title='Cклад' 
+                    onPress={()=> this.props.navigation.navigate('ProductComponents', { product: product })}/>
+            </Card>
+        )
+    })
+    }
+
     render(){
         return(
-            <Container>
-                <Content>
-                    <Text>Products Screen</Text>
+            <Container >
+                <Header
+                    backgroundColor='#A0CB1B'
+                    leftComponent={{ icon: 'menu', color: '#fff' }}
+                    centerComponent={{ text: 'Продукти', style: { color: '#fff' } }}
+                    rightComponent={{ icon: 'home', color: '#fff' }}
+                    />
+                <Content style={styles.container}>
+                {this.renderCards()}
                 </Content>
             </Container>
         );
     }
 }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ProductsScreen);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      padding: 10
+    }
+  });

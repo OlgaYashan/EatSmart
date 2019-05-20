@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Alert, View, Text, Vibration, StyleSheet } from 'react-native';
-import { Camera, BarCodeScanner, Permissions } from 'expo';
+import { Alert, View, Text, Vibration, StyleSheet, Button, CheckBox} from 'react-native';
+import { Camera, BarCodeScanner, Permissions, Constants } from 'expo';
+
 import Home from '../../screens/HomeScreen/index'
+
 
 
 export default class ExpoScanner extends Component {
@@ -15,6 +17,7 @@ export default class ExpoScanner extends Component {
     this.state = {
       hasCameraPermission: null,
       type: Camera.Constants.Type.back,
+      checked:false
     };
   }
 
@@ -47,9 +50,9 @@ export default class ExpoScanner extends Component {
 
    // if (type.startsWith('org.gs1.EAN')) {
       // Do something for EAN
-      console.log(`EAN scanned: ${data}`);
+ //     console.log(`EAN scanned: ${data}`);
       this.resetScanner();
-      this.props.navigation.navigate('Home', { ean: data });
+      this.props.navigation.navigate('Product', { barCode: data });
    // } else if (type.startsWith('org.iso.QRCode')) {
       // Do samething for QRCode
     //  console.log(`QRCode scanned: ${data}`);
@@ -94,24 +97,47 @@ export default class ExpoScanner extends Component {
       return <Text>No access to camera</Text>;
     }
     return (
-      <View style={styles.container}>
-        <View style={{ flex: 1 }}>
+
           <BarCodeScanner
             onBarCodeScanned={this.onBarCodeRead}
             style={StyleSheet.absoluteFill}
-          />
-          {this.renderMessage()}
-        </View>
-      </View>
+          >
+             <Text style={styles.text}>Scan your QR code</Text>
+             
+        <Text
+          onPress={() => this.props.navigation.navigate('Home')}
+          style={styles.cancel}>
+          Cancel
+        </Text>
+        
+
+            </BarCodeScanner>
+           
+
+          
+    
+   
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+
+  text: {
+    fontSize: 16,
+    marginTop: '20%',
+    textAlign: 'center',
+    color: 'white',
+  },
+
+  cancel: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#A0CB1B',
+    position: 'absolute',
+    bottom: 30,
+    left: 160
+
   },
   scanScreenMessage: {
     fontSize: 20,
@@ -121,3 +147,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
+
