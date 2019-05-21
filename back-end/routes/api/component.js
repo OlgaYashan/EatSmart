@@ -3,6 +3,9 @@ const router = require("express").Router();
 let ComponentModel = require('../../models/component');
 const componentService = require("../../services/component");
 
+
+
+
 router.get("/all", (req, res, next) => {
     componentService.findAll((err, data) => {
     if (!err) {
@@ -15,6 +18,8 @@ router.get("/all", (req, res, next) => {
     }
   });
 });
+
+
 
 //CREATE
 router.post('/',(req,res) => {

@@ -56,5 +56,8 @@ app.use((err, req,res,next)=>{
 })
 
 
-const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, ()=>console.info('Server has started on ' + PORT));
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+const server = app.listen(port, ()=>console.info('Server has started on ' + port));

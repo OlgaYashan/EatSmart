@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
   forbidenComponents: [],
   diet: {},
   rating: Number,
-  lastProducts: []
+  lastProducts: [],
+  history:[]
 });
 
 const User = mongoose.model("User", userSchema);

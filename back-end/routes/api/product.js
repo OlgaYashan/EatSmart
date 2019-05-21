@@ -78,6 +78,19 @@ router.get('/product', (req, res) => {
         })
 })
 
+//READ
+router.get('/barCode', (req, res) => {
+    ProductModel.findOne({
+        barCode: req.query.barCode
+    })
+        .then(doc => {
+            res.json(doc)
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+})
+
 
 //UPDATE
 router.put('/product', (req, res) => {
