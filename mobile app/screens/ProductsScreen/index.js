@@ -4,14 +4,23 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {  Container,Content} from 'native-base';
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import {connect} from 'react-redux';
-import { Card,Icon, ListItem,Button,Header } from 'react-native-elements';
+import { Card, ListItem,Button,Header } from 'react-native-elements';
 import img from './product.png'
+
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
  class ProductsScreen extends Component{
 
     componentWillMount(){
         this.props.loadProducts();
+    }
+
+    static  navigationOptions = {
+        drawerIcon:(
+          <Icon name='ios-cart' size={26} color='#3CB371'/>
+  
+        )
     }
 
     renderComponents=(product)=>{
@@ -47,7 +56,7 @@ import img from './product.png'
                 <Button  
                     buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:'#A0CB1B'}}
                     title='Cклад' 
-                    onPress={()=> this.props.navigation.navigate('ProductComponents', { product: product })}/>
+                    onPress={()=> this.props.navigation.navigate('ProductComponents', { product: product,page: 'Продукти' })}/>
             </Card>
         )
     })
@@ -55,7 +64,7 @@ import img from './product.png'
 
     render(){
         return(
-            <Container >
+            <Container style={styles.home} >
                 <Header
                     backgroundColor='#A0CB1B'
                     leftComponent={{ icon: 'menu', color: '#fff' }}
@@ -76,8 +85,12 @@ export default connect(
   )(ProductsScreen);
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 10
-    }
+    home:{
+        flex: 1,
+        marginBottom:20
+      },
+        container: {
+          flex: 1,
+          paddingBottom: 10
+        },
   });

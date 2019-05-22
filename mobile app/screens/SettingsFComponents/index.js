@@ -4,12 +4,13 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {  Container,Content} from 'native-base';
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import {connect} from 'react-redux';
-import { Card, ListItem,Button,Header } from 'react-native-elements';
+import { Card, ListItem,Button,Header,CheckBox } from 'react-native-elements';
 import img from './product.png'
 
 import Icon from 'react-native-vector-icons/Ionicons'
 
- class ComponentsScreen extends Component{
+ class SettingsFCScreen extends Component{
+
 
     componentWillMount(){
         this.props.loadComponents();
@@ -21,6 +22,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
   
         )
     }
+
+
 
 
     renderCards=()=>{
@@ -38,14 +41,8 @@ import Icon from 'react-native-vector-icons/Ionicons'
                 <Button  
                     buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:'#A0CB1B'}}
                     title='Більше інформації' 
-                    icon={
-                        <Icon  name='ios-settings' size={26} color='#3CB371'/>
-                      }
-                      iconContainerStyle={styles.icon}
-                      titleStyle={styles.title}
-
                     onPress={()=> this.props.navigation.navigate('Component', { component: component })}/>
-               
+                
             </Card>
         )
     })
@@ -71,7 +68,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ComponentsScreen);
+  )(SettingsFCScreen);
 
   const styles = StyleSheet.create({
     home:{
@@ -82,10 +79,4 @@ export default connect(
           flex: 1,
           paddingBottom: 10
         },
-        icon:{
-            margin:5
-        },
-        title:{
-            marginLeft:5
-        }
   });

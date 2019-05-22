@@ -105,7 +105,7 @@ export default class ExpoScanner extends Component {
              <Text style={styles.text}>Scan your QR code</Text>
              
         <Text
-          onPress={() => this.props.navigation.navigate('Home')}
+          onPress={() => this.props.navigation.navigate('Дім')}
           style={styles.cancel}>
           Cancel
         </Text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Provider } from 'react-redux';
 import store from "./store";
 //import Home from './containers/Home';
@@ -13,6 +13,12 @@ import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import ComponentsScreen from './screens/ComponentsScreen'
 import ProductComponentsScreen from './screens/ProductComponentsScreen'
 import ProductScreen from './screens/ProductScreen'
+import { Body, Container, Content, Header } from 'native-base';
+import {DrawerItems} from "react-navigation";
+//import img from './fav.png'
+import img from './apple.jpg'
+import ComponentScreen from './screens/ComponentScreen'
+
  
 
 
@@ -28,6 +34,21 @@ export default class App extends React.Component {
   }
 }
 
+const CustomDrawerContentComponent = (props)=>(
+  <Container>
+    <Header style={{height:200, backgroundColor:'#ffff'}}>
+      <Body>
+        <Image 
+          style={styles.drawerImage}
+          source={img}
+        />
+      </Body>
+    </Header>
+    <Content>
+      <DrawerItems {...props}/>
+    </Content>
+  </Container>
+)
 
 
 
@@ -35,17 +56,28 @@ const AuthStack = createStackNavigator({ SignIn: SignInScreen });
 
 const AppDrawerNavigator = createDrawerNavigator(
   {
-  Дім: HomeScreen,
-  Продукти: ProductsScreen,
-  Компоненти: ComponentsScreen,
-  Відсканувати: ScanerScreen
+  Дім: {screen:HomeScreen},
+  Продукти: {screen:ProductsScreen},
+  Компоненти: {screen:ComponentsScreen},
+  Відсканувати: {screen: ScanerScreen}
     },
     {
       unmountInactiveRoutes: true,
       initialRouteName:'Дім',
+      contentComponent: CustomDrawerContentComponent,
       drawerOpenRoute:'DrawerOpen',
       drawerCloseRoute: 'DrawerClose',
-      drawerToggleRoute:'DrawerToggle'
+      drawerToggleRoute:'DrawerToggle',
+      contentOptions: {
+        activeTintColor: '#9ACD32',
+        itemsContainerStyle: {
+          marginVertical: 0,
+        },
+        iconContainerStyle: {
+          opacity: 1
+        }
+      }
+      
 })
 
 const AppContainer = createAppContainer(createSwitchNavigator(
@@ -53,7 +85,8 @@ const AppContainer = createAppContainer(createSwitchNavigator(
     App:AppDrawerNavigator,
   Auth: AuthStack,
   ProductComponents:ProductComponentsScreen,
-  Product:ProductScreen
+  Product:ProductScreen,
+  Component: ComponentScreen
 },
 
   {
@@ -65,10 +98,14 @@ const AppContainer = createAppContainer(createSwitchNavigator(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  drawerImage:{
+    height:150,
+    width:150,
+    alignSelf: 'center'
+  }
 });
 
  

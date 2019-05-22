@@ -5,6 +5,8 @@ import {
 } from 'react-native'
 import  ExpoScanner  from '../../components/scanner/ExpoScanner';
 
+import Icon from 'react-native-vector-icons/Ionicons'
+
 class ScannerScreen extends React.Component {
 
   constructor(props) {
@@ -14,6 +16,14 @@ class ScannerScreen extends React.Component {
       isFocused: false
     };
   }
+
+  static  navigationOptions = {
+    drawerIcon:(
+      <Icon name='ios-qr-scanner'size={26} color='#3CB371'/>
+
+    )
+}
+
 
   componentDidMount() {
     this.focusListner = this.props.navigation.addListener(

@@ -1,5 +1,5 @@
 const config = {
-    apiHost: "http://192.168.1.137:3000/"
+    apiHost: "http://192.168.1.137:80/"
     
   };
   

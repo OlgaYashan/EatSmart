@@ -13,6 +13,14 @@ export default class AuthLoadingScreen extends React.Component {
     this._bootstrapAsync();
   }
 
+  componentWillMount(){
+    this._signOutAsync();
+  }
+  
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+  };
+
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');

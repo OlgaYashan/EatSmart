@@ -36,13 +36,17 @@ const {width: WIDTH} = Dimensions.get('window');
   }
   handleAuthorize = () =>{
     this.setState({message:true});
+   console.log(this.state.login,this.state.password);
     this.props.authorizeUser(this.state.login,this.state.password);
   }
 
   componentDidUpdate(prevProps){
-    if(prevProps.user.name != this.props.user.name){
     console.log(this.props.user.name);
     console.log(this.props.loading);
+    console.log(this.props.error);
+    
+    if(this.state.login == this.props.user.login){
+
     this._signInAsync();}
     
  
@@ -51,7 +55,6 @@ const {width: WIDTH} = Dimensions.get('window');
   componentWillMount(){
     this.props.clearUser();
   }
-  
 
   _signInAsync = async () => {
    
@@ -65,6 +68,9 @@ const {width: WIDTH} = Dimensions.get('window');
     this.setState({message:false});
   }
 
+ openMessage=()=>{
+    this.setState({message:true});
+  }
 
 
     static navigationOptions = {
@@ -87,7 +93,7 @@ const {width: WIDTH} = Dimensions.get('window');
                 <Image source={logo} style={styles.logo} />
                 
               </View>
-              {this.props.error  &&  this.state.message && !loading && user.name=="" && <View style={styles.ErrorContainer} >
+              {this.props.error  &&  this.state.message && !this.props.loading && <View style={styles.ErrorContainer} >
       <Text  style={styles.Error}> Erorr </Text></View>  }
                 
               

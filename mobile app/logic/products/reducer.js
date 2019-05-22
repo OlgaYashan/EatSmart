@@ -33,14 +33,15 @@ export default function productsReducer(state = defaultState.products, action) {
       return {
         ...state,
         products: action.payload.products,
-        loading: false
+        loading: false,
+        error:false
       };
     }
     case LOAD_PRODUCTS_ERROR: {
       return {
         ...state,
         loading: false,
-        error: action.payload.error
+        error: true
       };
     }
     case ADD_PRODUCT: {

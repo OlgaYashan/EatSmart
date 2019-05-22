@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "EatSmart",
-    "slug": "eatsmart",
+    "slug": "eatsmartngrok",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -30,7 +30,7 @@
         "INTERNET",
         "CAMERA"
       ],
-      "package":"com.lingonsaft.myapp"
+      "package": "com.lingonsaft.myapp"
     },
     "description": ""
   }

@@ -25,7 +25,8 @@ export default function userReducer(state = defaultState.user, action) {
       return {
         ...state,
         user: action.payload.user,
-        loading: false
+        loading: false,
+        error: false
       };
     }
     case LOAD_USER_ERROR: {

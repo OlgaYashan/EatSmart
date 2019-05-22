@@ -1,35 +1,73 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 
 import {  Container,Content} from 'native-base';
 import { mapStateToProps, mapDispatchToProps } from "./container";
 import {connect} from 'react-redux';
-import { Card,Icon, ListItem,Button,Header,CheckBox } from 'react-native-elements';
+import { Card, ListItem,Button,Header,CheckBox, Overlay, withTheme} from 'react-native-elements';
 import img from './product.png'
+import Icon from 'react-native-vector-icons/Ionicons'
 
+const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
 
  class ProductScreen extends Component{
 
     state = {
         pickedProduct:{name:""},
         loadDone: false,
+        notPickedProduct: {name:""},
         checked:false,
-        message: false
+        message: false,
+        error:false
+    }
+
+    myIndexOf = (arr, o) =>{  
+
+        for (var i = 0; i < arr.length; i++) {
+          
+            if (arr[i].name == o.name) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     componentWillUnmount(){
         this.props.clearProduct();
-        console.log(this.props.user.name);
-        console.log(this.state.pickedProduct.name);
+      
         if(this.state.pickedProduct.name!=""){
             var newUser = this.props.user;
-            newUser.history.unshift(this.state.pickedProduct);
-            newUser.lastProducts.unshift(this.state.pickedProduct);
+            
+                newUser.history.unshift(this.state.pickedProduct); 
+            
+            if(this.myIndexOf(newUser.lastProducts,this.state.pickedProduct)!=-1){
+                var i = this.myIndexOf(newUser.lastProducts,this.state.pickedProduct);
+                newUser.lastProducts.splice(i,1);
+                newUser.lastProducts.unshift(this.state.pickedProduct);
+            }
+            else{
+                newUser.lastProducts.unshift(this.state.pickedProduct); 
+            }
+            
             this.props.updateUser(newUser);
         }
+        if(this.state.notPickedProduct.name!=""){
+            var newUser = this.props.user;
+            if(this.myIndexOf(newUser.lastProducts,this.state.notPickedProduct)!=-1){
+                var i = this.myIndexOf(newUser.lastProducts,this.state.notPickedProduct);
+                newUser.lastProducts.splice(i,1);
+                newUser.lastProducts.unshift(this.state.notPickedProduct);
+            }
+            else{
+                newUser.lastProducts.unshift(this.state.notPickedProduct); 
+            }
+            this.props.updateUser(newUser);
+        }
+    
     }
 
     findProduct(){
+        this.setnotPickedProduct();
         const {user} = this.props;
         var forbidenComponents = user.forbidenComponents;
         var dietComponents = user.diet.forbidenComponents;
@@ -39,8 +77,7 @@ import img from './product.png'
      
         for (var i=0; i<productComponents.length;i++){
             for(var j=0; j<resFC.length; j++){
-                console.log(productComponents[i].name);
-                console.log(resFC[j].name);
+          
                 if(productComponents[i].name==resFC[j].name){
                     this.setState({message:true});
                 }
@@ -53,17 +90,23 @@ import img from './product.png'
     componentWillMount(){
         const { barCode } = this.props.navigation.state.params;
         this.props.loadProduct(barCode);
-          console.log(barCode);
+
     }
 
     componentDidUpdate(prevProps){
+        
         if(prevProps.product.name != this.props.product.name){
             this.loadDone();
             this.findProduct();
            
         }
+       
 
        
+    }
+
+    setnotPickedProduct=()=>{
+        this.setState({notPickedProduct:this.props.product})
     }
 
     messageOpen=()=>{
@@ -73,12 +116,16 @@ import img from './product.png'
     loadDone=()=>{
         this.setState({loadDone:true})
     }
+    loadError=()=>{
+        this.setState({error:true})
+    }
 
     renderComponents=(product)=>{
         return product.components.map((component, i) => {
             return( <ListItem
+                bottomDivider = {true}
                 key={i}
-                leftIcon={<Icon name='pocket' type='zocial' color='#A0CB1B'/>}
+                leftIcon={<Icon name='ios-leaf' size={26} color='#3CB371'/>}
                 title={component.name}
                 subtitle={<View style={styles.subtitleView}>
                             <Text >{component.type}</Text>
@@ -95,7 +142,7 @@ import img from './product.png'
             this.setState({pickedProduct: product})
         }
         else{
-            this.setState({pickedProduct: {name:""}})
+            this.setState({pickedProduct: {name:""}, notPickedProduct:product})
         }
         this.setState({checked: !this.state.checked})
        
@@ -123,8 +170,9 @@ import img from './product.png'
                    {this.renderComponents(product)}
                 </Content>
                 <CheckBox
+                    containerStyle={styles.check}
                     center
-                    title='Click Here to Remove This Item'
+                    title='Я це буду їсти'
                     iconRight
                     iconType='material'
                     checkedIcon='done'
@@ -134,6 +182,7 @@ import img from './product.png'
                     onPress={()=>this.handleChecked(product)}
                     />
             </Card>}
+         
             </View>
         )
     
@@ -142,14 +191,29 @@ import img from './product.png'
     render(){
         
         return(
-            <Container >
-                <Header backgroundColor='#A0CB1B'>
-                    <Button title="Назад" onPress={()=>this.props.navigation.navigate('Продукти')} />
+            <Container style={styles.home} >
+                   
+             
+                <Content>
+                <Header centerComponent={{ text: 'Продукт', style: { color: '#fff' } }} backgroundColor='#A0CB1B'>
+                    <Button buttonStyle={styles.btn} title="Назад" onPress={()=>this.props.navigation.navigate('Відсканувати')} />
                 </Header>
-                {this.state.message && <Text style={{margin: 10,alignSelf:'center', color:'#DC143C'}}>Forbiden</Text>}
+                {this.state.message && 
+                    <Overlay
+                    overlayStyle={styles.overlay}
+                    width={WIDTH-80}
+                    height={HEIGHT-500}
+                    isVisible={this.state.message}
+                    onBackdropPress={() => this.setState({ message: false })}
+                  >
+                    <Text style={styles.text}>Цей продукт є небезпечним для вас, адже містить заборонені компоненти!</Text>
+                  </Overlay>
+                }
                 <Content style={styles.container}>
                 {this.renderCard()}
                 </Content>
+                </Content>
+
             </Container>
         );
     }
@@ -161,8 +225,44 @@ export default connect(
   )(ProductScreen);
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 10
+    home:{
+        flex: 1,
+        marginBottom:20
+      },
+        container: {
+          flex: 1,
+          paddingBottom: 10
+        },
+    overlay:{
+        
+        backgroundColor: '#FA8072',
+        borderRadius: 25,
+        justifyContent: "center",
+        
+
+    },
+    text:{
+        color: '#E0FFFF',
+        fontSize: 16,
+        textAlign:'center'
+    },
+    btn:{
+        backgroundColor: '#6B8E23'
+    },
+    content:{
+        justifyContent: "center"
+    },
+    cancel: {
+        fontSize: 16,
+        textAlign: 'center',
+        color: '#A0CB1B',
+        position: 'absolute',
+        bottom: 30,
+        left: 160
+    
+      },
+
+    check:{
+marginTop:10
     }
   });

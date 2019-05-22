@@ -4,9 +4,9 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {  Container,Content} from 'native-base';
 
 import {connect} from 'react-redux';
-import { Card,Icon, ListItem,Button,Header } from 'react-native-elements';
+import { Card, ListItem,Button,Header } from 'react-native-elements';
 import img from './product.png'
-
+import Icon from 'react-native-vector-icons/Ionicons'
 
 export default class ProductComponentsScreen extends Component{
 
@@ -16,12 +16,14 @@ export default class ProductComponentsScreen extends Component{
         return(
             <Card key={i}>
                    <ListItem
-                    roundAvatar
                     title={component.name}
-                    avatar={img}
+                    leftIcon={<Icon name='ios-leaf' size={26} color='#3CB371'/>}
                      />    
                 <Text style={{marginBottom: 10, color:'#696969'}}>
                     {"тип: " + component.type}
+                </Text>
+                <Text style={{marginBottom: 10, color:'#696969'}}>
+                    {"опис: " + component.description}
                 </Text>
                 
             </Card>
@@ -30,16 +32,16 @@ export default class ProductComponentsScreen extends Component{
     }
 
     render(){
-        const { product } = this.props.navigation.state.params;
+        const { product,page } = this.props.navigation.state.params;
         return(
-            <Container >
+            <Container style={styles.home}>
                 <Header
                     backgroundColor='#A0CB1B'
-                    leftComponent={{ icon: 'menu', color: '#fff' }}
                     centerComponent={{ text: `${product.name}: компоненти`, style: { color: '#fff' } }}
-                    rightComponent={{ icon: 'home', color: '#fff' }}
-                    />
-                     <Button title="Назад" onPress={()=>this.props.navigation.navigate('Продукти')} />
+                   
+                    >
+                         <Button buttonStyle={styles.btn} title="Назад" onPress={()=>this.props.navigation.navigate(page)} />
+                    </Header>
                 <Content style={styles.container}>
                 {this.renderCards()}
                 </Content>
@@ -51,8 +53,15 @@ export default class ProductComponentsScreen extends Component{
 
 
   const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 10
+    home:{
+        flex: 1,
+        marginBottom:20
+      },
+        container: {
+          flex: 1,
+          paddingBottom: 10
+        },
+    btn:{
+        backgroundColor: '#6B8E23'
     }
   });
