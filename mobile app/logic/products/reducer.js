@@ -114,7 +114,8 @@ export default function productsReducer(state = defaultState.products, action) {
       return {
         ...state,
         product: action.payload.product,
-        loading: false
+        loading: false,
+        error:false
       };
     }
     case LOAD_PRODUCT_BAR_CODE_ERROR: {
@@ -127,7 +128,9 @@ export default function productsReducer(state = defaultState.products, action) {
     case CLEAR:{
       return {
         ...state,
-        product: {}
+        product: {},
+        loading:false,
+        error:false
       };
     }
     

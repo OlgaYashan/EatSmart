@@ -33,8 +33,9 @@ const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
     }
 
     componentWillUnmount(){
+      if(!this.props.error){
+          
         this.props.clearProduct();
-      
         if(this.state.pickedProduct.name!=""){
             var newUser = this.props.user;
             
@@ -62,6 +63,7 @@ const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
                 newUser.lastProducts.unshift(this.state.notPickedProduct); 
             }
             this.props.updateUser(newUser);
+        }
         }
     
     }
@@ -94,13 +96,15 @@ const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
     }
 
     componentDidUpdate(prevProps){
-        
-        if(prevProps.product.name != this.props.product.name){
-            this.loadDone();
-            this.findProduct();
-           
+        console.log(this.props.loading);
+        console.log(this.props.error);
+        if(!this.props.error || !this.props.loading){
+            if(prevProps.product.name != this.props.product.name){
+                    this.loadDone();
+                    this.findProduct();   
+                    console.log('yep')
         }
-       
+    }
 
        
     }
@@ -198,6 +202,11 @@ const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
                 <Header centerComponent={{ text: 'Продукт', style: { color: '#fff' } }} backgroundColor='#A0CB1B'>
                     <Button buttonStyle={styles.btn} title="Назад" onPress={()=>this.props.navigation.navigate('Відсканувати')} />
                 </Header>
+
+                {this.props.error && !this.props.loading && <Content contentContainerStyle={styles.content}>
+                    <Text style={styles.textError}>Продукт з таким штрих-кодом відсутній у базі. Розробників вже про це повідомлено:)</Text>
+                    
+                </Content>}
                 {this.state.message && 
                     <Overlay
                     overlayStyle={styles.overlay}
@@ -246,11 +255,19 @@ export default connect(
         fontSize: 16,
         textAlign:'center'
     },
+    textError:{
+        color: '#696969',
+        fontSize: 16,
+        textAlign:'center',
+        marginTop:40,
+        padding:10
+    },
     btn:{
         backgroundColor: '#6B8E23'
     },
     content:{
-        justifyContent: "center"
+        justifyContent: "center",
+        alignItems: 'center',
     },
     cancel: {
         fontSize: 16,

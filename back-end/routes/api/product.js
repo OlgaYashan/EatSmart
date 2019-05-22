@@ -84,8 +84,10 @@ router.get('/barCode', (req, res) => {
         barCode: req.query.barCode
     })
         .then(doc => {
-            res.json(doc)
-        })
+            if(doc == null){res.status(400).send("Errror")}
+            else{
+              res.json(doc)
+            }})
         .catch(err => {
             res.status(500).json(err)
         })

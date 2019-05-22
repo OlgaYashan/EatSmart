@@ -58,6 +58,6 @@ app.use((err, req,res,next)=>{
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 80;
 }
 const server = app.listen(port, ()=>console.info('Server has started on ' + port));

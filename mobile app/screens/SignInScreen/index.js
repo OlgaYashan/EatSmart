@@ -36,14 +36,10 @@ const {width: WIDTH} = Dimensions.get('window');
   }
   handleAuthorize = () =>{
     this.setState({message:true});
-   console.log(this.state.login,this.state.password);
     this.props.authorizeUser(this.state.login,this.state.password);
   }
 
   componentDidUpdate(prevProps){
-    console.log(this.props.user.name);
-    console.log(this.props.loading);
-    console.log(this.props.error);
     
     if(this.state.login == this.props.user.login){
 

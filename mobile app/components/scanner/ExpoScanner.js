@@ -107,7 +107,7 @@ export default class ExpoScanner extends Component {
         <Text
           onPress={() => this.props.navigation.navigate('Дім')}
           style={styles.cancel}>
-          Cancel
+          Повернутися
         </Text>
         
 
@@ -136,9 +136,8 @@ const styles = StyleSheet.create({
     color: '#A0CB1B',
     position: 'absolute',
     bottom: 30,
-    left: 160
-
-  },
+    left: 135
+    },
   scanScreenMessage: {
     fontSize: 20,
     color: 'white',
