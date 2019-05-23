@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "npm test",
-        "start": "nodemon ./index.js",
+        "start": "node ./index.js",
         "start-watch": "node ./index.js"
     },
     "author": "",
@@ -21,5 +21,8 @@
     },
     "devDependencies": {
         "nodemon": "^1.18.11"
+    },
+    "engines": {
+        "node": "11.14"
     }
 }
