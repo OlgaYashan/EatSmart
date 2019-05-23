@@ -29,8 +29,8 @@ export function mapDispatchToProps(dispatch) {
     loadComponents(){
       dispatch(loadComponents())
     },
-    addProduct(name,id_producer,components){
-      dispatch(addProduct(name,id_producer,components))
+    addProduct(name,id_producer,components,barCode){
+      dispatch(addProduct(name,id_producer,components,barCode))
     },
     deleteProduct(product){
       dispatch(deleteProduct(product))

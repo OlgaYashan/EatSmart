@@ -6,6 +6,9 @@
 .productForm{
     padding-top: 20px !important;
     font-family: Comfortaa !important;
+    .form{
+      width: 80vw !important;
+    }
    
     .message{
       .content{
@@ -25,7 +28,7 @@
       
     }
     .menu__style_form{
-        height: 29vh;
+        height: 37vh !important;
         width: 100% !important;
         overflow-y:scroll;
       

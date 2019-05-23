@@ -7,6 +7,7 @@
         max-height: 30rem;
         overflow-y: scroll;
 
+
     .table_body{
         .cell{
             word-wrap: break-word;  
@@ -37,3 +38,8 @@
 }
 }
 
+
+.ui.small.modal{
+    width: 40vw !important;
+    padding-bottom: 2vh !important;
+}

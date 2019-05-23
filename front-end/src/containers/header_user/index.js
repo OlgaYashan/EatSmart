@@ -13,6 +13,17 @@ export class UserHeader extends Component{
         this.props.authorizeUser(login,password);  
         
     }
+     componentDidUpdate(prevProps){
+        if(this.props.user.login!='999'){
+            if(prevProps.user.name!=this.props.user.name){
+                this.redirect();
+            }
+        }
+     }
+
+     redirect =()=>{
+        history.push("/user");
+    }
 
     registration = (login,password,name,surname,gender,age)=>{
         this.props.registrationUser(login,password,name,surname,gender,age,"user",0);

@@ -6,10 +6,10 @@ export function loadProducts() {
   };
 }
 
-export function addProduct(name,id_producer,components) {
+export function addProduct(name,id_producer,components,barCode) {
   return {
     type: ADD_PRODUCT,
-    payload: { name,id_producer,components }
+    payload: { name,id_producer,components,barCode }
   };
 }
 

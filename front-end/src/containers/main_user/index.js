@@ -13,6 +13,8 @@ import history from "../../history";
     componentDidMount = () => {
         this.props.loadDiets();
       };
+
+      
     
     redirect =()=>{
         history.push("/");

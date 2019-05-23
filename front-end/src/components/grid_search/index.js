@@ -20,7 +20,8 @@ export default class GridSearch extends Component{
         innit:false,
         lastProducts: [],
         deletedProducts:[],
-        modal:false
+        modal:false,
+        activeObj:{}
       };
     
 
@@ -148,11 +149,11 @@ export default class GridSearch extends Component{
     header={obj.name}
     meta={"Виробник: "+obj.name}
     extra={<div className='ui two buttons'>
-    <Modal closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true})}>
+    <Modal closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true, activeObj:obj})}>
       <Icon name="edit"/>
     </Button>}>
                                 <Modal.Content className="modal">
-                                    <ProductEditeForm  close={()=>this.setState({modal:false})} product={obj} editeProduct={this.props.editeProduct} loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
+                                    <ProductEditeForm  close={()=>this.setState({modal:false})} product={this.state.activeObj} editeProduct={this.props.editeProduct} loadProducts={this.props.loadProducts} addProduct={this.props.addProduct} components={this.props.components}/>
                                 </Modal.Content>
                             </Modal>
     

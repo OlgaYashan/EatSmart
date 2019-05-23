@@ -61,7 +61,7 @@ redirect =()=>{
             </div>
             </section>
             <div className="footer">
-                  
+                  <p className="footer-text">Яшан Ольга 2019</p>
             </div>
             
         </div>

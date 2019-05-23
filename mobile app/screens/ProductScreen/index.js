@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import { Card, ListItem,Button,Header,CheckBox, Overlay, withTheme} from 'react-native-elements';
 import img from './product.png'
 import Icon from 'react-native-vector-icons/Ionicons'
+import moment from 'moment';
 
 const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
 
@@ -38,7 +39,9 @@ const {width: WIDTH, height: HEIGHT} = Dimensions.get('window');
         this.props.clearProduct();
         if(this.state.pickedProduct.name!=""){
             var newUser = this.props.user;
-            
+                
+           // this.state.pickedProduct.date = (new Date).timezoneOffset(-180);
+           this.state.pickedProduct.date = moment().utcOffset(3).format();
                 newUser.history.unshift(this.state.pickedProduct); 
             
             if(this.myIndexOf(newUser.lastProducts,this.state.pickedProduct)!=-1){

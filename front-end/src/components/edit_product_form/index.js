@@ -8,6 +8,7 @@ export default class EditeProductForm extends Component {
     state = {
         name:"",
         producer:"",
+        barCode:"",
         activeItem: "",
         activeObj:{},
         messageOpened: false,
@@ -53,20 +54,22 @@ export default class EditeProductForm extends Component {
     
     const {product} = this.props;
     this.setState({name:product.name,producer:product.id_producer,
-      pickedArr: product.components, firstName:product.name })
+      pickedArr: product.components,barCode:product.barCode, firstName:product.name })
   }
 
    
     handleName = e => { this.setState({name:e.target.value});  }
     handleProducer = e => { this.setState({producer:e.target.value});}
+    handleBarCode = e => {this.setState({barCode:e.target.value});}
     handleSubmit = () =>{
      
       const {editeProduct} = this.props;
-      const {name,producer,pickedArr} = this.state;
+      const {name,producer,pickedArr,barCode} = this.state;
       var newProduct = this.props.product;
       newProduct.name=name;
       newProduct.producer=producer;
       newProduct.components=pickedArr;
+      newProduct.barCode=barCode;
       console.log(this.props.product.name);
       editeProduct(this.state.firstName,newProduct);
       this.setState({messageOpened:true}); 
@@ -118,7 +121,7 @@ export default class EditeProductForm extends Component {
         <Grid  textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         
         <Grid.Row columns="two">
-          <Grid.Column style={{ maxWidth: 350 }}>
+          <Grid.Column >
            
           
             
@@ -137,6 +140,15 @@ export default class EditeProductForm extends Component {
                   onChange={this.handleProducer}
                   onClick={this.closeMessage}
                   value={this.state.producer}
+                />
+                <Form.Input
+                  fluid
+                  icon='barcode'
+                  iconPosition='left'
+                  placeholder='Штрих-код'
+                  onChange={this.handleBarCode}
+                  onClick={this.closeMessage}
+                  value={this.state.barCode}
                 />
                 <Button color='olive' fluid size='large' onClick={this.handleSubmit}>
                   Змінити

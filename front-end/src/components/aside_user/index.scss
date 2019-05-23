@@ -19,6 +19,7 @@
         .info_header{
             margin: 0 !important;
             padding-bottom: 0.5rem;
+ 
         }
     }
     .items{    
@@ -45,7 +46,16 @@
         max-height:17vh;
         padding-top: 6px;
         box-shadow: 0 0 10px rgba(0, 0, 0, .1) inset; 
+       
       
+    }
+    .ui.list {
+        width: 100%;}
+    .ui.list>.item a.header{
+        color: #696969 !important;
+    }
+    .ui.list>.item a.header:hover{
+        color:#9ACD32 !important;
     }
     .aside_img_container{
         padding-top: 3rem;

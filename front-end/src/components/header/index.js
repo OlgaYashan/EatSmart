@@ -64,7 +64,7 @@ export default class Header extends Component{
                         <Dropdown item simple text='Меню'>
                         <Dropdown.Menu>
                             <Dropdown.Item ><Link className="link_style" to={"/components"}>Компоненти</Link></Dropdown.Item>
-                            <Dropdown.Item>Дієти</Dropdown.Item>
+                           {(this.checkUser()==true) && <Dropdown.Item><Link className="link_style" to={"/history"}>Історія</Link></Dropdown.Item>}
                             <Dropdown.Divider />
                             <Dropdown.Header>Навчання</Dropdown.Header>
                             <Dropdown.Item>

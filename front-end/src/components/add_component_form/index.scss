@@ -3,14 +3,14 @@
     src: url(../../fonts/Comfortaa.ttf); 
    }
 
-.productForm{
+.componentForm{
     padding-top: 20px !important;
     font-family: Comfortaa !important;
    
     .message{
       .content{
         padding: 0.5rem 0 !important;
-        max-width: 50rem !important;
+        width: 10rem !important;
         margin: 0 20px !important;
         .header{font-family: Comfortaa !important;}
         p{

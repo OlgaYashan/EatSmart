@@ -2,7 +2,12 @@
 .ui.search .results {
     display: none !important;
 }
-
+.ui.list>.item a.header{
+    color: #696969 !important;
+}
+.ui.list>.item a.header:hover{
+    color:#9ACD32 !important;
+}
 
 .top_pannel_admin{
     margin-top: 6.2rem !important;

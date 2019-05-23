@@ -70,7 +70,7 @@ export default class ComponentEditForm extends Component {
 {messageOpened && this.openMessage()}
         <Grid  textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         
-        <Grid.Row columns="two">
+        <Grid.Row columns="one">
           <Grid.Column style={{ maxWidth: 350 }}>
            
           

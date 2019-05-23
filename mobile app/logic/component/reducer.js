@@ -21,21 +21,23 @@ export default function componentReducer(state = defaultState.component, action)
     case LOAD_COMPONENT: {
       return {
         ...state,
-        loading: true
+        loading: true,
+        error:false
       };
     }
     case LOAD_COMPONENT_SUCCESS: {
       return {
         ...state,
         components: action.payload.components,
-        loading: false
+        loading: false,
+        error:false
       };
     }
     case LOAD_COMPONENT_ERROR: {
       return {
         ...state,
         loading: false,
-        error: action.payload.error
+        error: true
       };
     }
     case UPDATE_COMPONENT: {

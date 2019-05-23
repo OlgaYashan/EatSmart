@@ -67,7 +67,7 @@ export default class CustomList extends Component{
                 <Table.Cell textAlign="center" selectable>
                
                
-                <Modal closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal}  size="small" dimmer="blurring" trigger={ 
+                <Modal dimmer="blurring" closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal}  size="small"  trigger={ 
                     
                     <Button onClick={()=>this.setState({modal:true,activeComponent:component})} className="unstyled-button btn-edit">Змінити</Button> }>
                                 <Modal.Content className="modal">
@@ -122,7 +122,7 @@ export default class CustomList extends Component{
                     </Table.Row>
     {(this.props.user.role == "admin") && <Table.Row>
                     <Table.HeaderCell colSpan='5'>
-                    <Modal size="small" dimmer="blurring" trigger={ 
+                    <Modal className='modal' size="small" dimmer="blurring" trigger={ 
                     
                     <Button floated='right' icon labelPosition='left' color="olive" size='small'>
                         <Icon name='leaf' /> Додати компонент

@@ -5,7 +5,8 @@ let ProductSchema = new mongoose.Schema({
     components: [],
     rating: Number,
     id_producer: String,
-    barCode: {type: Number, default: 0} 
+    barCode: {type: Number, default: 0},
+    date:{type: Date, default: Date.now},
 }) 
 
 module.exports = mongoose.model("Product", ProductSchema);
