@@ -1,9 +1,15 @@
-import { LOAD_USER, DELETE_USER, UPDATE_USER,ADD_USER } from "./actionTypes";
+import { LOAD_USER, DELETE_USER, UPDATE_USER,ADD_USER,CLEAR_USER } from "./actionTypes";
 
 export function loadUser() {
   return {
     type: LOAD_USER
   };
+}
+
+export function CLEAR(){
+  return {
+    type: CLEAR_USER
+  }
 }
 
 export function deleteUser(id) {

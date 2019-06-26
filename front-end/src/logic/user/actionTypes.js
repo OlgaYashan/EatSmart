@@ -12,3 +12,4 @@ export const ADD_USER = "ADD_USER";
 export const ADD_USER_SUCCESS = "ADD_USER:SUCCESS";
 export const ADD_USER_ERROR = "ADD_USER:ERROR";
 
+export const CLEAR_USER = "CLEAR_USER";

@@ -1,4 +1,4 @@
-import { authorizeUser, registrationUser } from "../../logic/user/actions";
+import { authorizeUser, registrationUser, CLEAR } from "../../logic/user/actions";
 
 export function mapStateToProps(state) {
   const { user, loading, error } = state.user;
@@ -17,6 +17,9 @@ export function mapDispatchToProps(dispatch) {
     },
     registrationUser(login,password,name,surname,gender,age,role,rating) {
       dispatch(registrationUser(login,password,name,surname,gender,age,role,rating));
+    },
+    CLEAR(){
+      dispatch(CLEAR());
     }
   };
 }

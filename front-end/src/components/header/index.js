@@ -39,8 +39,7 @@ export default class Header extends Component{
     }
 
     handleExit = () =>{
-       const {authorization} = this.props;
-       authorization("999","999");
+       this.props.clear();
        history.push("/");
     
      

@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const config = {
-  apiHost: "http://localhost:80/"
+  apiHost: "https://eat-smart.herokuapp.com/"
 };
 
 export default config;

@@ -67,7 +67,7 @@ export default class EditeProductForm extends Component {
       const {name,producer,pickedArr,barCode} = this.state;
       var newProduct = this.props.product;
       newProduct.name=name;
-      newProduct.producer=producer;
+      newProduct.id_producer=producer;
       newProduct.components=pickedArr;
       newProduct.barCode=barCode;
       console.log(this.props.product.name);

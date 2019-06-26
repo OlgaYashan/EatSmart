@@ -60,15 +60,24 @@ export default class GridSearch extends Component{
         return res;
       }
 
+      isEmpty(obj) {
+        for (var key in obj) {
+          return false;
+        }
+        return true;
+      }
+
       componentCheckDiet=(product)=>{
         var res=false;
         const {user} = this.props;
         for(var i=0; i<product.components.length;i++){
+          if(!this.isEmpty(user.diet)){
           for(var j=0; j<user.diet.forbidenComponents.length;j++){
               if(product.components[i].name==user.diet.forbidenComponents[j].name){
                 res=true;
               }
           }
+        }
         }
         return res;
       }

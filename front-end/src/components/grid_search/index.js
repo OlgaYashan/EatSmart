@@ -138,7 +138,7 @@ export default class GridSearch extends Component{
                    {(this.props.user.role !="admin")&&  <Card 
     image={img}
     header={obj.name}
-    meta={"Виробник: "+obj.name}
+    meta={"Виробник: "+obj.id_producer}
     extra={<a>
     <Icon name='star outline' />
     {obj.rating}
@@ -147,7 +147,7 @@ export default class GridSearch extends Component{
   {(this.props.user.role=="admin")&&  <Card 
     image={img}
     header={obj.name}
-    meta={"Виробник: "+obj.name}
+    meta={"Виробник: "+obj.id_producer}
     extra={<div className='ui two buttons'>
     <Modal closeIcon={<Button  color="olive" floated='right' icon onClick={()=>this.setState({modal:false})} > <Icon name='times' /></Button>} open={this.state.modal} size="small" dimmer="blurring" trigger={ <Button size="tiny" basic color='olive' onClick={()=>this.setState({modal:true, activeObj:obj})}>
       <Icon name="edit"/>

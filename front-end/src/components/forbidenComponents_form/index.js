@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Button, Icon,Card, Form, Grid, Header, Image, Message, Segment,Modal,Divider,List, Menu } from 'semantic-ui-react'
 import './index.scss';
 import LogoImg from "./logo.png"
-import male from "./male1.png"
+import male from "./leaf2.png"
 
 export default class ForbidenComponentsForm extends Component {
     state = { 
@@ -96,7 +96,7 @@ export default class ForbidenComponentsForm extends Component {
          {(this.state.activeItem!="")&&<Segment>
          <Card fluid className="card__style">
       <Card.Content>
-      <Image className="img" size='tiny' src={male} />
+      <Icon color='olive' size='big' name='leaf' className="ico"/>
         <Card.Header>{this.state.activeObj.name}</Card.Header>
         <Card.Meta>{this.state.activeObj.type}</Card.Meta>
         <Card.Description className="desc_style">{this.state.activeObj.description}</Card.Description>

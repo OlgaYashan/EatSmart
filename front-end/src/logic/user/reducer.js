@@ -8,12 +8,24 @@ import {
   UPDATE_USER_ERROR,
   ADD_USER,
   ADD_USER_SUCCESS,
-  ADD_USER_ERROR
+  ADD_USER_ERROR,
+  CLEAR_USER
 
 } from "./actionTypes";
 
 export default function userReducer(state = defaultState.user, action) {
   switch (action.type) {
+    case CLEAR_USER: {
+      return {
+        ...state,
+        user: {
+          login:"",
+          password:"",
+          name:"",
+          avatarLink:"http://trinitynews.ie/wp-content/uploads/2017/02/hijab.png" 
+        }
+      };
+    }
     case LOAD_USER: {
       return {
         ...state,

@@ -12,6 +12,10 @@
 }
 .card__style{
     height: 100%;
+    .ico{
+        position: absolute;
+        left: 540px;
+    }
     .desc_style{
         word-wrap: break-word;
     }

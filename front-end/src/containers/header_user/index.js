@@ -32,7 +32,7 @@ export class UserHeader extends Component{
     render(){
         const { error, loading, user } = this.props;
         return( <Fragment>
-                    <Header registration={this.registration} user={user} error={error} loading={loading} authorization={this.authorization} />
+                    <Header clear={this.props.CLEAR} registration={this.registration} user={user} error={error} loading={loading} authorization={this.authorization} />
                 </Fragment>
         )
     }

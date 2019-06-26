@@ -134,7 +134,7 @@ import AnylyseResult from '../../components/analyse_result/index'
                     this.props.user.history.length==0 &&
                             <Header color='olive' as='h2'className="hed">
                             <Icon name='mobile alternate' color="grey" />
-                            <Header.Content>Скористайтеся мобіьним додатком та відскануйте штрих-код продукту, який будете їсти!</Header.Content>
+                            <Header.Content>Скористайтеся мобільним додатком та відскануйте штрих-код продукту, який будете їсти!</Header.Content>
                             </Header>
                         }</div>
                     </div>

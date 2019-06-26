@@ -57,14 +57,14 @@ export default class ComponentAddForm extends Component {
               Додати компонент
             </Header>
 {messageOpened && this.openMessage()}
-        <Grid  textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+        <Grid   textAlign='center' style={{ height: '100%', marginTop: '0.5rem' }} verticalAlign='middle'>
         
-        <Grid.Row columns="one">
+        <Grid.Row  columns="one">
           <Grid.Column style={{ maxWidth: 350 }}>
            
           
             
-            <Form inverted size='large' >
+            <Form  inverted size='large' >
             
               <Segment inverted stacked>
                 <Form.Input fluid icon='user' iconPosition='left' placeholder='Назва' 
